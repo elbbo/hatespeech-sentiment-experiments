@@ -5,37 +5,24 @@ import java.io.IOException;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReader;
-import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
-import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
-import org.apache.uima.resource.ResourceInitializationException;
 import org.dkpro.core.corenlp.CoreNlpNamedEntityRecognizer;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
+import de.uni.due.haring.annotation.analyser.analyse.AnalysisAgreementReporter;
 import de.uni.due.haring.annotation.analyser.analyse.AnalysisReporter;
-import de.uni.due.haring.annotation.analyser.processors.AnnotationAgreementProcessor;
 import de.uni.due.haring.annotation.analyser.processors.GoldAnnotationProcessor;
 
 public class App {
     public static void main(String[] args) throws UIMAException, IOException {
 	System.out.println("Hello World!");
 
-	// runPipeline();
+	runAgreement();
 	
-	/*
-	 * Agreement
-	 */
-	CollectionReader agreementReader = CollectionReaderFactory.createReader(XmiReader.class,
-		XmiReader.PARAM_LANGUAGE, "DE", XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/agreement-100/",
-		XmiReader.PARAM_PATTERNS, "*.xmi", XmiReader.PARAM_TYPE_SYSTEM_FILE,
-		"src/main/resources/agreement-100/TypeSystem.xml");
+	// runPipeline();
 
-	AnalysisEngineDescription annotationAgreementProcessor = AnalysisEngineFactory
-		.createEngineDescription(AnnotationAgreementProcessor.class);
-
-	SimplePipeline.runPipeline(agreementReader, annotationAgreementProcessor);
     }
 
     private static void runPipeline() throws UIMAException, IOException {
@@ -45,7 +32,7 @@ public class App {
 
 	AnalysisEngineDescription goldAnnotationProcessor = AnalysisEngineFactory.createEngineDescription(
 		GoldAnnotationProcessor.class, GoldAnnotationProcessor.PARAM_ANNOTATION_DATA_INPUT_FILE_PATH,
-		"src/main/resources/set-2/pro.germeval2018.train.subset_original.txt");
+		"src/main/resources/set-2/original.subset.2019.training.100.txt");
 
 //	AnalysisEngineDescription seg = AnalysisEngineFactory.createEngineDescription(StanfordSegmenter.class,
 //		StanfordSegmenter.PARAM_LANGUAGE, "DE");
@@ -59,5 +46,18 @@ public class App {
 	AnalysisEngineDescription report = AnalysisEngineFactory.createEngineDescription(AnalysisReporter.class);
 
 	SimplePipeline.runPipeline(reader, goldAnnotationProcessor, ner, report);
+    }
+
+    private static void runAgreement() throws UIMAException, IOException {
+	CollectionReader agreementReader = CollectionReaderFactory.createReader(XmiReader.class,
+		XmiReader.PARAM_LANGUAGE, "DE", XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/agreement-100/",
+		XmiReader.PARAM_PATTERNS, "*.xmi", XmiReader.PARAM_TYPE_SYSTEM_FILE,
+		"src/main/resources/agreement-100/TypeSystem.xml");
+
+	AnalysisEngineDescription annotationAgreementReporter = AnalysisEngineFactory.createEngineDescription(
+		AnalysisAgreementReporter.class, AnalysisAgreementReporter.PARAM_TYPESYSTEM_DESCRIPTION_PATH,
+		"src/main/resources/agreement-100/TypeSystem.xml");
+
+	SimplePipeline.runPipeline(agreementReader, annotationAgreementReporter);
     }
 }
