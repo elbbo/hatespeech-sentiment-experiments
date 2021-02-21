@@ -24,6 +24,8 @@ public class AnalysisReporter extends JCasAnnotator_ImplBase {
     public void process(JCas jCas) throws AnalysisEngineProcessException {
 	CoreNlpNamedEntityEvaluator coreNlpNamedEntityEvaluator = new CoreNlpNamedEntityEvaluator(jCas);
 	coreNlpNamedEntityEvaluator.processAnnotations();
+	
+	
     }
 
 

@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Wed Dec 30 20:25:06 CET 2020 */
+/* First created by JCasGen Sun Feb 21 17:15:08 CET 2021 */
 package webanno.custom;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Wed Dec 30 20:25:06 CET 2020
- * XML source: C:/Users/Stewie/eclipse-workspace/annotation.analyser/src/main/resources/set-2/TypeSystem.xml
+ * Updated by JCasGen Sun Feb 21 17:15:08 CET 2021
+ * XML source: C:/Users/Stewie/eclipse-workspace/hatespeech-sentiment-experiments/src/main/resources/agreement-100/TypeSystem.xml
  * @generated */
 public class Zielgruppenadressierung extends Annotation {
   /** @generated
@@ -143,25 +143,25 @@ public class Zielgruppenadressierung extends Annotation {
    
     
   //*--------------*
-  //* Feature: markImplicit
+  //* Feature: ImplicitAddressing
 
-  /** getter for markImplicit - gets 
+  /** getter for ImplicitAddressing - gets 
    * @generated
    * @return value of the feature 
    */
-  public boolean getMarkImplicit() {
-    if (Zielgruppenadressierung_Type.featOkTst && ((Zielgruppenadressierung_Type)jcasType).casFeat_markImplicit == null)
-      jcasType.jcas.throwFeatMissing("markImplicit", "webanno.custom.Zielgruppenadressierung");
-    return jcasType.ll_cas.ll_getBooleanValue(addr, ((Zielgruppenadressierung_Type)jcasType).casFeatCode_markImplicit);}
+  public boolean getImplicitAddressing() {
+    if (Zielgruppenadressierung_Type.featOkTst && ((Zielgruppenadressierung_Type)jcasType).casFeat_ImplicitAddressing == null)
+      jcasType.jcas.throwFeatMissing("ImplicitAddressing", "webanno.custom.Zielgruppenadressierung");
+    return jcasType.ll_cas.ll_getBooleanValue(addr, ((Zielgruppenadressierung_Type)jcasType).casFeatCode_ImplicitAddressing);}
     
-  /** setter for markImplicit - sets  
+  /** setter for ImplicitAddressing - sets  
    * @generated
    * @param v value to set into the feature 
    */
-  public void setMarkImplicit(boolean v) {
-    if (Zielgruppenadressierung_Type.featOkTst && ((Zielgruppenadressierung_Type)jcasType).casFeat_markImplicit == null)
-      jcasType.jcas.throwFeatMissing("markImplicit", "webanno.custom.Zielgruppenadressierung");
-    jcasType.ll_cas.ll_setBooleanValue(addr, ((Zielgruppenadressierung_Type)jcasType).casFeatCode_markImplicit, v);}    
+  public void setImplicitAddressing(boolean v) {
+    if (Zielgruppenadressierung_Type.featOkTst && ((Zielgruppenadressierung_Type)jcasType).casFeat_ImplicitAddressing == null)
+      jcasType.jcas.throwFeatMissing("ImplicitAddressing", "webanno.custom.Zielgruppenadressierung");
+    jcasType.ll_cas.ll_setBooleanValue(addr, ((Zielgruppenadressierung_Type)jcasType).casFeatCode_ImplicitAddressing, v);}    
   }
 
     

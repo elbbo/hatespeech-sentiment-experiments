@@ -23,22 +23,22 @@ public enum GroupAffiliationType {
 	LEFT_WING("politisches Spektrum links"),
 	RIGHT_WING("politisches Spektrum rechts");
 	
-	private static final Map<String, GroupAffiliationType> BY_LABEL = new HashMap<>();
-	
-    static {
-        for (GroupAffiliationType e: values()) {
-            BY_LABEL.put(e.label, e);
-        }
-    }
-	
-	public final String label;
+    private static final Map<String, GroupAffiliationType> BY_LABEL = new HashMap<>();
 
-	private GroupAffiliationType(String label) {
-		this.label = label;
+    static {
+	for (GroupAffiliationType e : values()) {
+	    BY_LABEL.put(e.label, e);
 	}
-	
-    public static GroupAffiliationType valueOfLabel(String label) {
-        return BY_LABEL.get(label);
     }
-	
+
+    public final String label;
+
+    private GroupAffiliationType(String label) {
+	this.label = label;
+    }
+
+    public static GroupAffiliationType valueOfLabel(String label) {
+	return BY_LABEL.get(label);
+    }
+
 }

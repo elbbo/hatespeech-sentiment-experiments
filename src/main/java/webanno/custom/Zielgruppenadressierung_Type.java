@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Wed Dec 30 20:25:06 CET 2020 */
+/* First created by JCasGen Sun Feb 21 17:15:08 CET 2021 */
 package webanno.custom;
 
 import org.apache.uima.jcas.JCas;
@@ -11,7 +11,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Wed Dec 30 20:25:06 CET 2020
+ * Updated by JCasGen Sun Feb 21 17:15:08 CET 2021
  * @generated */
 public class Zielgruppenadressierung_Type extends Annotation_Type {
   /** @generated */
@@ -95,26 +95,26 @@ public class Zielgruppenadressierung_Type extends Annotation_Type {
   
  
   /** @generated */
-  final Feature casFeat_markImplicit;
+  final Feature casFeat_ImplicitAddressing;
   /** @generated */
-  final int     casFeatCode_markImplicit;
+  final int     casFeatCode_ImplicitAddressing;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public boolean getMarkImplicit(int addr) {
-        if (featOkTst && casFeat_markImplicit == null)
-      jcas.throwFeatMissing("markImplicit", "webanno.custom.Zielgruppenadressierung");
-    return ll_cas.ll_getBooleanValue(addr, casFeatCode_markImplicit);
+  public boolean getImplicitAddressing(int addr) {
+        if (featOkTst && casFeat_ImplicitAddressing == null)
+      jcas.throwFeatMissing("ImplicitAddressing", "webanno.custom.Zielgruppenadressierung");
+    return ll_cas.ll_getBooleanValue(addr, casFeatCode_ImplicitAddressing);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setMarkImplicit(int addr, boolean v) {
-        if (featOkTst && casFeat_markImplicit == null)
-      jcas.throwFeatMissing("markImplicit", "webanno.custom.Zielgruppenadressierung");
-    ll_cas.ll_setBooleanValue(addr, casFeatCode_markImplicit, v);}
+  public void setImplicitAddressing(int addr, boolean v) {
+        if (featOkTst && casFeat_ImplicitAddressing == null)
+      jcas.throwFeatMissing("ImplicitAddressing", "webanno.custom.Zielgruppenadressierung");
+    ll_cas.ll_setBooleanValue(addr, casFeatCode_ImplicitAddressing, v);}
     
   
 
@@ -142,8 +142,8 @@ public class Zielgruppenadressierung_Type extends Annotation_Type {
     casFeatCode_NegativeSentiment  = (null == casFeat_NegativeSentiment) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_NegativeSentiment).getCode();
 
  
-    casFeat_markImplicit = jcas.getRequiredFeatureDE(casType, "markImplicit", "uima.cas.Boolean", featOkTst);
-    casFeatCode_markImplicit  = (null == casFeat_markImplicit) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_markImplicit).getCode();
+    casFeat_ImplicitAddressing = jcas.getRequiredFeatureDE(casType, "ImplicitAddressing", "uima.cas.Boolean", featOkTst);
+    casFeatCode_ImplicitAddressing  = (null == casFeat_ImplicitAddressing) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_ImplicitAddressing).getCode();
 
   }
 }

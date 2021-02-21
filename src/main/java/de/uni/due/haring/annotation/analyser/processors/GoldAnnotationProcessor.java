@@ -69,7 +69,7 @@ public class GoldAnnotationProcessor extends JCasAnnotator_ImplBase {
 		personAddress.setGroupAddress(pa.getGroupIndividual().equals("Group"));
 		personAddress.setGroupAffiliation(GroupAffiliationType.valueOfLabel(pa.getGroupAffiliation()));
 		personAddress.setHasNegativeSentiment(pa.getNegativeSentiment());
-		personAddress.setImplicit(pa.getMarkImplicit());
+		personAddress.setImplicit(pa.getImplicitAddressing());
 
 		sentenceAnnotation.getPersonAddresses().add(personAddress);
 	    }
