@@ -50,13 +50,13 @@ public class App {
 
     private static void runAgreement() throws UIMAException, IOException {
 	CollectionReader agreementReader = CollectionReaderFactory.createReader(XmiReader.class,
-		XmiReader.PARAM_LANGUAGE, "DE", XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/agreement-100/",
+		XmiReader.PARAM_LANGUAGE, "DE", XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/agreements/",
 		XmiReader.PARAM_PATTERNS, "*.xmi", XmiReader.PARAM_TYPE_SYSTEM_FILE,
-		"src/main/resources/agreement-100/TypeSystem.xml");
+		"src/main/resources/agreements/TypeSystem.xml");
 
 	AnalysisEngineDescription annotationAgreementReporter = AnalysisEngineFactory.createEngineDescription(
 		AnalysisAgreementReporter.class, AnalysisAgreementReporter.PARAM_TYPESYSTEM_DESCRIPTION_PATH,
-		"src/main/resources/agreement-100/TypeSystem.xml");
+		"src/main/resources/agreements/TypeSystem.xml");
 
 	SimplePipeline.runPipeline(agreementReader, annotationAgreementReporter);
     }
