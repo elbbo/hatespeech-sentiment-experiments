@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Wed May 05 23:04:03 CEST 2021 */
+/* First created by JCasGen Wed May 05 23:22:10 CEST 2021 */
 package de.uni.due.haring.annotation;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Wed May 05 23:04:03 CEST 2021
- * XML source: C:/Users/Stewie/eclipse-workspace/hatespeech-sentiment-experiments/src/main/java/webanno/custom/TwitterUserAnnotatorDescriptor.xml
+ * Updated by JCasGen Wed May 05 23:22:10 CEST 2021
+ * XML source: C:/Users/Stewie/eclipse-workspace/hatespeech-sentiment-experiments/src/main/resources/set-1/TypeSystem.xml
  * @generated */
 public class TwitterUser extends Annotation {
   /** @generated
@@ -74,6 +74,28 @@ public class TwitterUser extends Annotation {
    */
   private void readObject() {/*default - does nothing empty block */}
      
-}
+ 
+    
+  //*--------------*
+  //* Feature: coveredText
+
+  /** getter for coveredText - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public String getCoveredText() {
+    if (TwitterUser_Type.featOkTst && ((TwitterUser_Type)jcasType).casFeat_coveredText == null)
+      jcasType.jcas.throwFeatMissing("coveredText", "de.uni.due.haring.annotation.TwitterUser");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((TwitterUser_Type)jcasType).casFeatCode_coveredText);}
+    
+  /** setter for coveredText - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setCoveredText(String v) {
+    if (TwitterUser_Type.featOkTst && ((TwitterUser_Type)jcasType).casFeat_coveredText == null)
+      jcasType.jcas.throwFeatMissing("coveredText", "de.uni.due.haring.annotation.TwitterUser");
+    jcasType.ll_cas.ll_setStringValue(addr, ((TwitterUser_Type)jcasType).casFeatCode_coveredText, v);}    
+  }
 
     
