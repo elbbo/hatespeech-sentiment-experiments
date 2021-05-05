@@ -8,6 +8,7 @@ public class SentenceAnnotation {
     private List<PersonAddress> personAddresses;
     private String offenseGoldAnnotation;
     private boolean isOffensive;
+    private boolean isProfanity;
     private boolean hasNegativeSentiment;
 
     public String getDocumentText() {
@@ -48,6 +49,14 @@ public class SentenceAnnotation {
 
     public void setHasNegativeSentiment(boolean hasNegativeSentiment) {
 	this.hasNegativeSentiment = hasNegativeSentiment;
+    }
+
+    public boolean isProfanity() {
+	return isProfanity;
+    }
+
+    public void setProfanity(boolean isProfanity) {
+	this.isProfanity = isProfanity;
     }
 
 }

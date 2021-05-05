@@ -4004,7 +4004,7 @@
     <typeDescription>
                               
             
-      <name>webanno.custom.ImplicitExmplicit</name>
+      <name>webanno.custom.Zielgruppenadressierung</name>
                               
             
       <description/>
@@ -4019,7 +4019,7 @@
         <featureDescription>
                                                   
                     
-          <name>ImplicitExplicit</name>
+          <name>GroupIndividual</name>
                                                   
                     
           <description/>
@@ -4029,27 +4029,6 @@
                                               
                 
         </featureDescription>
-                                    
-            
-      </features>
-                          
-        
-    </typeDescription>
-                    
-        
-    <typeDescription>
-                              
-            
-      <name>webanno.custom.PersonAddress</name>
-                              
-            
-      <description/>
-                              
-            
-      <supertypeName>uima.tcas.Annotation</supertypeName>
-                              
-            
-      <features>
                                         
                 
         <featureDescription>
@@ -4070,13 +4049,13 @@
         <featureDescription>
                                                   
                     
-          <name>ImplicitExplicit</name>
+          <name>NegativeSentiment</name>
                                                   
                     
           <description/>
                                                   
                     
-          <rangeTypeName>uima.cas.String</rangeTypeName>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
                                               
                 
         </featureDescription>
@@ -4085,166 +4064,19 @@
         <featureDescription>
                                                   
                     
-          <name>IndividualGroup</name>
+          <name>ImplicitAddressing</name>
                                                   
                     
           <description/>
                                                   
                     
-          <rangeTypeName>uima.cas.String</rangeTypeName>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
                                               
                 
         </featureDescription>
                                     
             
       </features>
-                          
-        
-    </typeDescription>
-                    
-        
-    <typeDescription>
-                              
-            
-      <name>webanno.custom.Sentiment</name>
-                              
-            
-      <description/>
-                              
-            
-      <supertypeName>uima.tcas.Annotation</supertypeName>
-                              
-            
-      <features>
-                                        
-                
-        <featureDescription>
-                                                  
-                    
-          <name>Dependent</name>
-                                                  
-                    
-          <description/>
-                                                  
-                    
-          <rangeTypeName>webanno.custom.PersonAddress</rangeTypeName>
-                                              
-                
-        </featureDescription>
-                                        
-                
-        <featureDescription>
-                                                  
-                    
-          <name>Governor</name>
-                                                  
-                    
-          <description/>
-                                                  
-                    
-          <rangeTypeName>webanno.custom.PersonAddress</rangeTypeName>
-                                              
-                
-        </featureDescription>
-                                        
-                
-        <featureDescription>
-                                                  
-                    
-          <name>Sentiment</name>
-                                                  
-                    
-          <description/>
-                                                  
-                    
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-                                              
-                
-        </featureDescription>
-                                    
-            
-      </features>
-                          
-        
-    </typeDescription>
-                    
-        
-    <typeDescription>
-                              
-            
-      <name>webanno.custom.Sentiment2</name>
-                              
-            
-      <description/>
-                              
-            
-      <supertypeName>uima.tcas.Annotation</supertypeName>
-                              
-            
-      <features>
-                                        
-                
-        <featureDescription>
-                                                  
-                    
-          <name>Dependent</name>
-                                                  
-                    
-          <description/>
-                                                  
-                    
-          <rangeTypeName>webanno.custom.SentimentPart</rangeTypeName>
-                                              
-                
-        </featureDescription>
-                                        
-                
-        <featureDescription>
-                                                  
-                    
-          <name>Governor</name>
-                                                  
-                    
-          <description/>
-                                                  
-                    
-          <rangeTypeName>webanno.custom.SentimentPart</rangeTypeName>
-                                              
-                
-        </featureDescription>
-                                        
-                
-        <featureDescription>
-                                                  
-                    
-          <name>Sentiment</name>
-                                                  
-                    
-          <description/>
-                                                  
-                    
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-                                              
-                
-        </featureDescription>
-                                    
-            
-      </features>
-                          
-        
-    </typeDescription>
-                    
-        
-    <typeDescription>
-                              
-            
-      <name>webanno.custom.SentimentPart</name>
-                              
-            
-      <description/>
-                              
-            
-      <supertypeName>uima.tcas.Annotation</supertypeName>
                           
         
     </typeDescription>
@@ -5027,6 +4859,29 @@
     </typeDescription>
                 
     
+    <typeDescription>
+            
+      <name>de.uni.due.haring.annotation.TwitterUser</name>
+            
+      <description/>
+            
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+            
+      <features>
+                
+        <featureDescription>
+                    
+          <name>coveredText</name>
+                    
+          <description/>
+                    
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+                  
+        </featureDescription>
+              
+      </features>
+          
+    </typeDescription>
   </types>
       
 

@@ -1,5 +1,8 @@
 package de.uni.due.haring.annotation.analyser.evaluators;
 
+import java.util.List;
+
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Range;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -7,59 +10,47 @@ import org.apache.uima.jcas.JCas;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
-import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 import webanno.custom.Zielgruppenadressierung;
 
-public class CoreNlpNamedEntityEvaluator implements AnnotationEvaluator {
+public class CoreNlpNamedEntityEvaluator extends EntityEvaluator implements AnnotationEvaluator {
 
-    private JCas jCas;
+    public CoreNlpNamedEntityEvaluator() {
+	super();
+    }
 
     public CoreNlpNamedEntityEvaluator(JCas jCas) {
-	this.jCas = jCas;
+	super(jCas);
     }
 
     @Override
     public void processAnnotations() {
-
-	int index = 0;
-	for (Sentence sentence : JCasUtil.select(jCas, Sentence.class)) {
-	    SentenceAnnotation goldSentenceAnnotation = SentenceAnnotationService.getSentencesAnnotations().get(index);
-
-	    System.out.println("###");
-	    System.out.println("Sentence: " + sentence.getCoveredText());
-	    StringBuilder personAddresses = new StringBuilder();
-	    personAddresses.append("PersonAddresses: ");
-	    goldSentenceAnnotation.getPersonAddresses().stream()
-		    .forEach(pa -> personAddresses.append(pa.getCoveredText() + ", "));
-	    System.out.println(personAddresses.toString());
-
-	    StringBuilder foundEntities = new StringBuilder();
-	    foundEntities.append("Found Entities: ");
-	    int entitiesHit = 0;
-	    for (NamedEntity ne : JCasUtil.selectCovered(jCas, NamedEntity.class, sentence)) {
-		foundEntities.append(ne.getCoveredText() + ", ");
-
-		if (entityMatch(jCas, sentence, ne)) {
-		    entitiesHit++;
+	for (Sentence sentence : JCasUtil.select(getjCas(), Sentence.class)) {
+	    List<Zielgruppenadressierung> personAddressEntities = getPersonAddressEntitiesByPosition(sentence);
+	    for (NamedEntity ne : JCasUtil.selectCovered(getjCas(), NamedEntity.class, sentence)) {
+		Zielgruppenadressierung entity = entityMatch(getjCas(), sentence, ne);
+		if (ObjectUtils.isNotEmpty(entity)) {
+		    if (personAddressEntities.contains(entity)) {
+			personAddressEntities.remove(entity);
+		    }
+		    increaseTruePositive();
+		} else {
+		    increaseFalsePositive();
 		}
 	    }
-	    System.out.println(foundEntities.toString());
-	    System.out.println("Hits: " + entitiesHit + " from: " + goldSentenceAnnotation.getPersonAddresses().size());
-	    System.out.println("###");
-	    index++;
+	    setFalseNegative(getFalseNegative() + personAddressEntities.size());
 	}
+
     }
 
-    private boolean entityMatch(JCas jCas, Sentence sentence, NamedEntity ne) {
-	boolean entityMatch = false;
+    private Zielgruppenadressierung entityMatch(JCas jCas, Sentence sentence, NamedEntity ne) {
 	for (Zielgruppenadressierung personAddress : JCasUtil.subiterate(jCas, Zielgruppenadressierung.class, sentence,
 		true, true)) {
 	    if (Range.between(personAddress.getBegin() - 2, personAddress.getBegin() + 2).contains(ne.getBegin())
 		    && Range.between(personAddress.getEnd() - 2, personAddress.getEnd() + 2).contains(ne.getEnd())) {
-		entityMatch = true;
+		return personAddress;
 	    }
 	}
-	return entityMatch;
+	return null;
 
     }
 
@@ -70,6 +61,13 @@ public class CoreNlpNamedEntityEvaluator implements AnnotationEvaluator {
 
     @Override
     public void printEvaluationResults() {
-	// TODO Auto-generated method stub
+	System.out.println("### NER Results ");
+	System.out.println("NER TruePoisitve: " + getTruePositive());
+	System.out.println("NER FalsePositive: " + getFalsePositive());
+	System.out.println("NER FalseNegative: " + getFalseNegative());
+	System.out.println("NER Precision: " + getPrecision());
+	System.out.println("NER Recall : " + getRecall());
+	System.out.println("NER F1: " + getF1Score());
+	System.out.println("### NER Results ");
     }
 }

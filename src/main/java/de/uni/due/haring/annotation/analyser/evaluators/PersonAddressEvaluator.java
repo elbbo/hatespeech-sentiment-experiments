@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import de.uni.due.haring.annotation.analyser.annotations.PersonAddress;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
+import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
 
 public class PersonAddressEvaluator implements AnnotationEvaluator {
 
@@ -16,6 +17,8 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
     private int totalPersonAddresses;
     private int totalGroups;
     private int totalIndividuals;
+    private int totalIndividualsAddressThroughTwitter;
+    private int totalIndividualsAddressThroughTwitterWithNegativeSentiment;
 
     private int totalPersonAddressesWithNegativeSentiment;
     private int totalGroupsWithNegativeSentiment;
@@ -38,10 +41,13 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 	totalPersonAddressesWithNegativeSentiment = getTotalPersonAddressWithNegativeSentiment();
 	totalGroupsWithNegativeSentiment = getTotalPersonAdressGroupsWithNegativeSentiment();
 	totalIndividualsWithNegativeSentiment = getTotalPersonAdressIndividualsWithNegativeSentiment();
+	totalIndividualsAddressThroughTwitterWithNegativeSentiment = getTotalIndividualsAddressThroughTwitterWithNegativeSentiment();
 
 	averagePersonAddressesPerSentence = getAveragePersonAddressesPerSentence();
 	averageGroupsPerSentence = getAverageGroupsPerSentence();
 	averageIndividualsPerSentence = getAverageIndividualsPerSentence();
+	totalIndividualsAddressThroughTwitter = getTotalIndividualsAddressThroughTwitter();
+
     }
 
     @Override
@@ -59,6 +65,8 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 	System.out.println("Individuals Total: " + totalIndividuals);
 	System.out.println("Individuals Total w/negativeSentiment: " + totalIndividualsWithNegativeSentiment);
 	System.out.println("Individuals Average p/s: " + averageIndividualsPerSentence);
+	System.out.println("Individuals addressed through twitter: " + totalIndividualsAddressThroughTwitter);
+	System.out.println("Individuals addressed through twitter w/negativeSentiment: " + totalIndividualsAddressThroughTwitterWithNegativeSentiment);
     }
 
     private int getTotalPersonAdressIndividualsWithNegativeSentiment() {
@@ -96,6 +104,27 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 	return sentenceAnnotations.stream()
 		.mapToInt(sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().size()).sum();
     }
+
+    private int getTotalIndividualsAddressThroughTwitter() {
+	return sentenceAnnotations.stream()
+		.mapToInt(
+			sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().stream()
+				.filter(pa -> pa.getGroupAffiliation().label.equals(GroupAffiliationType.OTHER.label)
+					&& pa.getAddressType().equals("Individual") && pa.getCoveredText().startsWith("@"))
+				.collect(Collectors.toList()).size())
+		.sum();
+    }
+    
+    private int getTotalIndividualsAddressThroughTwitterWithNegativeSentiment() {
+	return sentenceAnnotations.stream()
+		.mapToInt(
+			sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().stream()
+				.filter(pa -> pa.getGroupAffiliation().label.equals(GroupAffiliationType.OTHER.label)
+					&& pa.getAddressType().equals("Individual") && pa.getCoveredText().startsWith("@") && pa.hasNegativeSentiment())
+				.collect(Collectors.toList()).size())
+		.sum();
+    }
+
 
     private int getTotalSentences() {
 	return sentenceAnnotations.size();

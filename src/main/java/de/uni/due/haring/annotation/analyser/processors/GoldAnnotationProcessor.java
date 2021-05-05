@@ -33,11 +33,13 @@ public class GoldAnnotationProcessor extends JCasAnnotator_ImplBase {
 
     private static List<SentenceAnnotation> sentencesAnnotations = new ArrayList<>();
     private Map<String, String> germEvalAnnotations;
+    private Map<String, String> germEvalAnnotationsLayer2;
 
     @Override
     public void initialize(UimaContext context) throws ResourceInitializationException {
 	super.initialize(context);
 	germEvalAnnotations = new HashMap<String, String>();
+	germEvalAnnotationsLayer2 = new HashMap<String, String>();
 
 	try {
 	    BufferedReader reader = new BufferedReader(
@@ -45,6 +47,7 @@ public class GoldAnnotationProcessor extends JCasAnnotator_ImplBase {
 	    reader.lines().forEach(line -> {
 		String[] splittedLine = line.split("\t");
 		germEvalAnnotations.put(splittedLine[0], splittedLine[1]);
+		germEvalAnnotationsLayer2.put(splittedLine[0], splittedLine[2]);
 	    });
 	    reader.close();
 	} catch (IOException e) {
@@ -60,6 +63,7 @@ public class GoldAnnotationProcessor extends JCasAnnotator_ImplBase {
 	    sentenceAnnotation.setPersonAddresses(new ArrayList<>());
 	    sentenceAnnotation.setOffenseGoldAnnotation(germEvalAnnotations.get(sentence.getCoveredText()));
 	    sentenceAnnotation.setOffensive(germEvalAnnotations.get(sentence.getCoveredText()).equals("OFFENSE"));
+	    sentenceAnnotation.setProfanity(germEvalAnnotationsLayer2.get(sentence.getCoveredText()).equals("PROFANITY"));
 
 	    for (Zielgruppenadressierung pa : JCasUtil.subiterate(aJCas, Zielgruppenadressierung.class, sentence, true,
 		    true)) {

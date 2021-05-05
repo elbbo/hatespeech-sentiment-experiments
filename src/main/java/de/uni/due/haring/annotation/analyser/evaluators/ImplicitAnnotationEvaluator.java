@@ -1,5 +1,6 @@
 package de.uni.due.haring.annotation.analyser.evaluators;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,9 @@ public class ImplicitAnnotationEvaluator implements AnnotationEvaluator {
     private int totalImplicitWithNegativeSentiment;
     private int totalImplicitWithNegativeSentimentNoExplicit;
 
+    private int totalImplicitGroupAnnotations;
+    private List<PersonAddress> implicitIndividualAnnotations;
+
     public ImplicitAnnotationEvaluator() {
 	this.sentenceAnnotations = SentenceAnnotationService.getSentencesAnnotations();
     }
@@ -30,6 +34,9 @@ public class ImplicitAnnotationEvaluator implements AnnotationEvaluator {
 	totalExplicitWithNegativeSentiment = getExplicitAnnotationsWithNegativeSentiment();
 	totalImplicitWithNegativeSentiment = getImplicitAnnotationsWithNegativeSentiment();
 
+	totalImplicitGroupAnnotations = getImplicitGroupAnnotations();
+
+	implicitIndividualAnnotations = getImplicitIAnnotations();
 	calculateImplicitAnnotationsWithNegativeSentimentNoExplicit();
     }
 
@@ -40,7 +47,11 @@ public class ImplicitAnnotationEvaluator implements AnnotationEvaluator {
 
 	System.out.println("Implicit Total: " + totalImplicit);
 	System.out.println("Implicit Total w/negativeSentiment: " + totalImplicitWithNegativeSentiment);
-	System.out.println("Implicit Total w/negativeSentiment / no explicit in Sentence: " + totalImplicitWithNegativeSentimentNoExplicit);
+	System.out.println("Implicit Total w/negativeSentiment / no explicit in Sentence: "
+		+ totalImplicitWithNegativeSentimentNoExplicit);
+
+	System.out.println("Implicit Total groups: " + totalImplicitGroupAnnotations);
+	// implicitIndividualAnnotations.forEach(pa -> System.out.println(pa.getCoveredText()));
     }
 
     private void calculateImplicitAnnotationsWithNegativeSentimentNoExplicit() {
@@ -78,6 +89,24 @@ public class ImplicitAnnotationEvaluator implements AnnotationEvaluator {
     private int getExplicitAnnotations() {
 	return sentenceAnnotations.stream().mapToInt(sentenceAnnotation -> sentenceAnnotation.getPersonAddresses()
 		.stream().filter(pa -> !pa.isImplicit()).collect(Collectors.toList()).size()).sum();
+    }
+
+    private int getImplicitGroupAnnotations() {
+	return sentenceAnnotations.stream()
+		.mapToInt(sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().stream()
+			.filter(pa -> pa.isImplicit() && pa.isGroupAddress()).collect(Collectors.toList()).size())
+		.sum();
+    }
+
+    private List<PersonAddress> getImplicitIAnnotations() {
+	List<PersonAddress> annotations = new ArrayList<>();
+	sentenceAnnotations.stream().forEach(sentenceAnnotation -> {
+	    List<PersonAddress> personAddresses = sentenceAnnotation.getPersonAddresses().stream()
+		    .filter(pa -> pa.isImplicit() && pa.isGroupAddress()).collect(Collectors.toList());
+	    if (personAddresses.size() > 0)
+		annotations.addAll(personAddresses);
+	});
+	return annotations;
     }
 
 }

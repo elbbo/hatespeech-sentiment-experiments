@@ -14,8 +14,12 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
 
     private int totalSentencesOffensiveGold;
     private int totalSentencesNegativeSentiment;
+
+    private int totalSentencesOffensiveAndNoNegativeSentiment;
+    private int totalSentencesNotOffensiveAndNegativeSentiment;
+
     private int coverageOffensiveAnnotations;
-    
+
     private double kappaAgreement;
 
     public GermEvalAnnotationEvaluator() {
@@ -29,19 +33,40 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
 	coverageOffensiveAnnotations = getCoverageOffensiveAnnotations();
 
 	kappaAgreement = calculateKappaAgreement();
+
+	totalSentencesOffensiveAndNoNegativeSentiment = getOffensiveNoNegativeSentiment();
+	totalSentencesNotOffensiveAndNegativeSentiment = getNotOffensiveNegativeSentiment();
     }
 
     @Override
     public void printEvaluationResults() {
 	System.out.println("Sentences Total Offensive: " + totalSentencesOffensiveGold);
 	System.out.println("Sentences Total w/negativeSentiment: " + totalSentencesNegativeSentiment);
+	System.out.println("Sentences Total offensive but no negative sentiment: "
+		+ totalSentencesOffensiveAndNoNegativeSentiment);
+	System.out.println("Sentences Total not offensive but negative sentiment: "
+		+ totalSentencesNotOffensiveAndNegativeSentiment);
+
 	System.out.println("Coverage Offensive Annotations: " + coverageOffensiveAnnotations);
 	System.out.println("Kappa Agreement: " + kappaAgreement);
+
     }
-    
+
     private int getCoverageOffensiveAnnotations() {
 	return sentenceAnnotations.stream().filter(
 		sentenceAnnotation -> sentenceAnnotation.isOffensive() && sentenceAnnotation.hasNegativeSentiment())
+		.collect(Collectors.toList()).size();
+    }
+
+    private int getOffensiveNoNegativeSentiment() {
+	return sentenceAnnotations.stream().filter(
+		sentenceAnnotation -> sentenceAnnotation.isOffensive() && !sentenceAnnotation.hasNegativeSentiment())
+		.collect(Collectors.toList()).size();
+    }
+
+    private int getNotOffensiveNegativeSentiment() {
+	return sentenceAnnotations.stream().filter(
+		sentenceAnnotation -> !sentenceAnnotation.isOffensive() && sentenceAnnotation.hasNegativeSentiment())
 		.collect(Collectors.toList()).size();
     }
 
@@ -54,18 +79,18 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
 	return sentenceAnnotations.stream().filter(sentenceAnnotation -> sentenceAnnotation.isOffensive())
 		.collect(Collectors.toList()).size();
     }
-    
+
     private double calculateKappaAgreement() {
 	CodingAnnotationStudy study = new CodingAnnotationStudy(2);
-	
-	for(SentenceAnnotation sentenceAnnotation : sentenceAnnotations) {
+
+	for (SentenceAnnotation sentenceAnnotation : sentenceAnnotations) {
 	    boolean personAddressAnnotation = sentenceAnnotation.hasNegativeSentiment();
 	    boolean germEvalGoldAnnotation = sentenceAnnotation.isOffensive();
 	    study.addItem(personAddressAnnotation, germEvalGoldAnnotation);
 	}
-	
+
 	CohenKappaAgreement kappa = new CohenKappaAgreement(study);
-	
+
 	return kappa.calculateAgreement();
     }
 
