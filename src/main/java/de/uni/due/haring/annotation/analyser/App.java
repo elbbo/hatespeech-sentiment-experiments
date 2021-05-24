@@ -37,15 +37,14 @@ public class App {
 		GoldAnnotationProcessor.class, GoldAnnotationProcessor.PARAM_ANNOTATION_DATA_INPUT_FILE_PATH,
 		"src/main/resources/subset-gold/subset.2019.training.gold.txt");
 
-
 	AnalysisEngineDescription seg = AnalysisEngineFactory.createEngineDescription(CoreNlpSegmenter.class,
 		CoreNlpSegmenter.PARAM_LANGUAGE, "de");
-	
+
 	AnalysisEngineDescription twitterSeg = AnalysisEngineFactory.createEngineDescription(TwitterSegmenter.class);
 
 	AnalysisEngineDescription pos = AnalysisEngineFactory.createEngineDescription(OpenNlpPosTagger.class,
 		OpenNlpPosTagger.PARAM_LANGUAGE, "de");
-	
+
 	AnalysisEngineDescription ner = AnalysisEngineFactory.createEngineDescription(
 		CoreNlpNamedEntityRecognizer.class, CoreNlpNamedEntityRecognizer.PARAM_LANGUAGE, "de");
 

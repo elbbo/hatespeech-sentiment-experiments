@@ -3,7 +3,6 @@ package de.uni.due.haring.annotation.analyser.evaluators;
 import java.util.List;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.Range;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -31,8 +30,8 @@ public class OpenNLPPosTaggerEvaluator extends EntityEvaluator implements Annota
 		    if (ObjectUtils.isNotEmpty(entity)) {
 			if (personAddressEntities.contains(entity)) {
 			    personAddressEntities.remove(entity);
+			    increaseTruePositive();
 			}
-			increaseTruePositive();
 		    } else {
 			increaseFalsePositive();
 		    }
@@ -41,19 +40,6 @@ public class OpenNLPPosTaggerEvaluator extends EntityEvaluator implements Annota
 	    setFalseNegative(getFalseNegative() + personAddressEntities.size());
 	}
 
-    }
-
-    private Zielgruppenadressierung entityMatch(JCas jCas, Sentence sentence, POS tagClass) {
-	for (Zielgruppenadressierung personAddress : JCasUtil.subiterate(jCas, Zielgruppenadressierung.class, sentence,
-		true, true)) {
-	    if (Range.between(personAddress.getBegin() - 2, personAddress.getBegin() + 2).contains(tagClass.getBegin())
-		    && Range.between(personAddress.getEnd() - 2, personAddress.getEnd() + 2)
-			    .contains(tagClass.getEnd())) {
-		return personAddress;
-	    }
-	}
-
-	return null;
     }
 
     @Override

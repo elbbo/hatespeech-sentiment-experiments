@@ -17,10 +17,12 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
 
     private int totalSentencesOffensiveAndNoNegativeSentiment;
     private int totalSentencesNotOffensiveAndNegativeSentiment;
+    private int totalSentencesNotOffensiveAndNoNegativeSentiment;
 
     private int coverageOffensiveAnnotations;
 
     private double kappaAgreement;
+    private double accuracy;
 
     public GermEvalAnnotationEvaluator() {
 	this.sentenceAnnotations = SentenceAnnotationService.getSentencesAnnotations();
@@ -32,10 +34,12 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
 	totalSentencesNegativeSentiment = getTotalSentencesNegativeSentiment();
 	coverageOffensiveAnnotations = getCoverageOffensiveAnnotations();
 
+	accuracy = calculateAccuracy();
 	kappaAgreement = calculateKappaAgreement();
 
 	totalSentencesOffensiveAndNoNegativeSentiment = getOffensiveNoNegativeSentiment();
 	totalSentencesNotOffensiveAndNegativeSentiment = getNotOffensiveNegativeSentiment();
+	totalSentencesNotOffensiveAndNoNegativeSentiment = getNotOffensiveAndNoNegativeSentiment();
     }
 
     @Override
@@ -46,6 +50,8 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
 		+ totalSentencesOffensiveAndNoNegativeSentiment);
 	System.out.println("Sentences Total not offensive but negative sentiment: "
 		+ totalSentencesNotOffensiveAndNegativeSentiment);
+	System.out.println("Sentences Total not offensive and no negative sentiment: "
+		+ totalSentencesNotOffensiveAndNoNegativeSentiment);
 
 	System.out.println("Coverage Offensive Annotations: " + coverageOffensiveAnnotations);
 	System.out.println("Kappa Agreement: " + kappaAgreement);
@@ -78,6 +84,16 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
     private int getTotalSentencesOffensive() {
 	return sentenceAnnotations.stream().filter(sentenceAnnotation -> sentenceAnnotation.isOffensive())
 		.collect(Collectors.toList()).size();
+    }
+
+    private int getNotOffensiveAndNoNegativeSentiment() {
+	return sentenceAnnotations.stream().filter(
+		sentenceAnnotation -> !sentenceAnnotation.isOffensive() && !sentenceAnnotation.hasNegativeSentiment())
+		.collect(Collectors.toList()).size();
+    }
+
+    private double calculateAccuracy() {
+	return 00;
     }
 
     private double calculateKappaAgreement() {

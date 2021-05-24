@@ -5,14 +5,14 @@ import java.util.List;
 
 import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
 
-public class MediaPressMatcher implements GroupAffiliationMatcher {
+public class EnvironmentalMovementGreensMatcher implements GroupAffiliationMatcher {
 
-    private final String FILE_PATH = "./src/main/resources/lists/media_press";
+    private final String FILE_PATH = "./src/main/resources/lists/environmental_green";
     private List<String> listOfEntities;
 
     private double similarityScore;
 
-    public MediaPressMatcher() throws IOException {
+    public EnvironmentalMovementGreensMatcher() throws IOException {
 	listOfEntities = initEntities(FILE_PATH);
     }
 
@@ -34,7 +34,7 @@ public class MediaPressMatcher implements GroupAffiliationMatcher {
 
     @Override
     public GroupAffiliationType getGroupAffiliationType() {
-	return GroupAffiliationType.MEDIA_PRESS;
+	return GroupAffiliationType.ENVIRONMENTAL_GREENS;
     }
 
 }

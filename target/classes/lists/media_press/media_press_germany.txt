@@ -1,0 +1,35 @@
+dpa
+BILD
+Spiegel
+FOCUS
+tagesschau
+Handelsblatt
+BusinessNews
+Bloomberg
+Tagespost
+Die Welt
+Welt
+Die Zeit
+Zeit
+Der General-Anzeiger
+General-Anzeiger
+Frankfurter Allgemeine Zeitung
+Frankfurter Allgemeine
+FAZ
+Frankfurter Rundschau
+DER FREITAG
+Mitteldeutsche Zeitung
+NEUES DEUTSCHLAND
+Rheinische Post
+Süddeutsche Zeitung
+Süddeutsche
+Die TAZ
+die Tageszeitung
+TAZ
+Die Westdeutsche Allgemeine Zeitung
+Westdeutsche Allgemeine
+WAZ
+Westfälischer Anzeiger
+ZDF
+Das Erste
+ARD
