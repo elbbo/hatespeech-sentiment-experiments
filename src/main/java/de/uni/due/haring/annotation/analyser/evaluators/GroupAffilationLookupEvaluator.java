@@ -68,8 +68,6 @@ public class GroupAffilationLookupEvaluator extends EntityEvaluator implements A
 	    processMediaPressAffiliation(groupAffilationGoldLabel, predictedGroupAffiliation);
 	    processEnvironmentalGreensAffiliation(groupAffilationGoldLabel, predictedGroupAffiliation);
 
-	    System.out.println(personAddress.getCoveredText() + " = " + groupAffilationGoldLabel + " ### "
-		    + predictedGroupAffiliation.label);
 	}
     }
 
@@ -171,37 +169,37 @@ public class GroupAffilationLookupEvaluator extends EntityEvaluator implements A
 	System.out.println("### GeneralPoltics Results ");
 	float preGP = getPrecision(truePositiveGP, falsePositiveGP);
 	float recGP = getRecall(truePositiveGP, falseNegativeGP);
-	System.out.println("NER TruePoisitve: " + truePositiveGP);
-	System.out.println("NER FalsePositive: " + falsePositiveGP);
-	System.out.println("NER FalseNegative: " + falseNegativeGP);
-	System.out.println("NER TrueNegative: " + trueNegativeGP);
-	System.out.println("NER Precision: " + preGP);
-	System.out.println("NER Recall : " + recGP);
-	System.out.println("NER F1: " + getF1Score(preGP, recGP));
+	System.out.println("LA TruePoisitve: " + truePositiveGP);
+	System.out.println("LA FalsePositive: " + falsePositiveGP);
+	System.out.println("LA FalseNegative: " + falseNegativeGP);
+	System.out.println("LA TrueNegative: " + trueNegativeGP);
+	System.out.println("LA Precision: " + preGP);
+	System.out.println("LA Recall : " + recGP);
+	System.out.println("LA F1: " + getF1Score(preGP, recGP));
 	System.out.println("### GeneralPoltics Results ");
 
 	System.out.println("### MediaPress Results ");
 	float preMP = getPrecision(truePositiveMP, falsePositiveMP);
 	float recMP = getRecall(truePositiveMP, falseNegativeMP);
-	System.out.println("NER TruePoisitve: " + truePositiveMP);
-	System.out.println("NER FalsePositive: " + falsePositiveMP);
-	System.out.println("NER FalseNegative: " + falseNegativeMP);
-	System.out.println("NER TrueNegative: " + trueNegativeMP);
-	System.out.println("NER Precision: " + preMP);
-	System.out.println("NER Recall : " + recMP);
-	System.out.println("NER F1: " + getF1Score(preMP, recMP));
+	System.out.println("LA TruePoisitve: " + truePositiveMP);
+	System.out.println("LA FalsePositive: " + falsePositiveMP);
+	System.out.println("LA FalseNegative: " + falseNegativeMP);
+	System.out.println("LA TrueNegative: " + trueNegativeMP);
+	System.out.println("LA Precision: " + preMP);
+	System.out.println("LA Recall : " + recMP);
+	System.out.println("LA F1: " + getF1Score(preMP, recMP));
 	System.out.println("### MediaPress Results ");
 
 	System.out.println("### Greens Results ");
 	float preGRE = getPrecision(truePositiveGRE, falsePositiveGRE);
 	float recGRE = getRecall(truePositiveGRE, falseNegativeGRE);
-	System.out.println("NER TruePoisitve: " + truePositiveGRE);
-	System.out.println("NER FalsePositive: " + falsePositiveGRE);
-	System.out.println("NER FalseNegative: " + falseNegativeGRE);
-	System.out.println("NER TrueNegative: " + trueNegativeGRE);
-	System.out.println("NER Precision: " + preGRE);
-	System.out.println("NER Recall : " + recGRE);
-	System.out.println("NER F1: " + getF1Score(preGRE, recGRE));
+	System.out.println("LA TruePoisitve: " + truePositiveGRE);
+	System.out.println("LA FalsePositive: " + falsePositiveGRE);
+	System.out.println("LA FalseNegative: " + falseNegativeGRE);
+	System.out.println("LA TrueNegative: " + trueNegativeGRE);
+	System.out.println("LA Precision: " + preGRE);
+	System.out.println("LA Recall : " + recGRE);
+	System.out.println("LA F1: " + getF1Score(preGRE, recGRE));
 	System.out.println("### Greens Results ");
 
     }

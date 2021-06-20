@@ -38,13 +38,13 @@ public class NegativeSentimentSentencePredictionEvaluator extends EntityEvaluato
     @Override
     public void printEvaluationResults() {
 	System.out.println("### SentenceSentimentPrediction Results ");
-	System.out.println("NER TruePoisitve: " + getTruePositive());
-	System.out.println("NER FalsePositive: " + getFalsePositive());
-	System.out.println("NER FalseNegative: " + getFalseNegative());
-	System.out.println("NER TrueNegative: " + getTrueNegative());
-	System.out.println("NER Precision: " + getPrecision());
-	System.out.println("NER Recall : " + getRecall());
-	System.out.println("NER F1: " + getF1Score());
+	System.out.println("SEN TruePoisitve: " + getTruePositive());
+	System.out.println("SEN FalsePositive: " + getFalsePositive());
+	System.out.println("SEN FalseNegative: " + getFalseNegative());
+	System.out.println("SEN TrueNegative: " + getTrueNegative());
+	System.out.println("SEN Precision: " + getPrecision());
+	System.out.println("SEN Recall : " + getRecall());
+	System.out.println("SEN F1: " + getF1Score());
 	System.out.println("### SentenceSentimentPrediction Results ");
     }
 

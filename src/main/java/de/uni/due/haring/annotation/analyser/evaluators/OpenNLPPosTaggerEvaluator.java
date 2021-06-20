@@ -45,12 +45,12 @@ public class OpenNLPPosTaggerEvaluator extends EntityEvaluator implements Annota
     @Override
     public void printEvaluationResults() {
 	System.out.println("### POS Results ");
-	System.out.println("NER TruePoisitve: " + getTruePositive());
-	System.out.println("NER FalsePositive: " + getFalsePositive());
-	System.out.println("NER FalseNegative: " + getFalseNegative());
-	System.out.println("NER Precision: " + getPrecision());
-	System.out.println("NER Recall : " + getRecall());
-	System.out.println("NER F1: " + getF1Score());
+	System.out.println("PoS TruePoisitve: " + getTruePositive());
+	System.out.println("PoS FalsePositive: " + getFalsePositive());
+	System.out.println("PoS FalseNegative: " + getFalseNegative());
+	System.out.println("PoS Precision: " + getPrecision());
+	System.out.println("PoS Recall : " + getRecall());
+	System.out.println("PoS F1: " + getF1Score());
 	System.out.println("### POS Results ");
     }
 

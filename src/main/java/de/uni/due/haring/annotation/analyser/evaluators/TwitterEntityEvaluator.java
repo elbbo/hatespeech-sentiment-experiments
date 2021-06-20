@@ -43,12 +43,12 @@ public class TwitterEntityEvaluator extends EntityEvaluator implements Annotatio
     @Override
     public void printEvaluationResults() {
 	System.out.println("### TwitterEntity Results ");
-	System.out.println("NER TruePoisitve: " + getTruePositive());
-	System.out.println("NER FalsePositive: " + getFalsePositive());
-	System.out.println("NER FalseNegative: " + getFalseNegative());
-	System.out.println("NER Precision: " + getPrecision());
-	System.out.println("NER Recall : " + getRecall());
-	System.out.println("NER F1: " + getF1Score());
+	System.out.println("TW TruePoisitve: " + getTruePositive());
+	System.out.println("TW FalsePositive: " + getFalsePositive());
+	System.out.println("TW FalseNegative: " + getFalseNegative());
+	System.out.println("TW Precision: " + getPrecision());
+	System.out.println("TW Recall : " + getRecall());
+	System.out.println("TW F1: " + getF1Score());
 	System.out.println("### TwitterEntity Results ");
     }
 }

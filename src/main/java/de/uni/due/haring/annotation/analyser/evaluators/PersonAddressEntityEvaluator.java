@@ -61,12 +61,12 @@ public class PersonAddressEntityEvaluator extends EntityEvaluator implements Ann
     @Override
     public void printEvaluationResults() {
 	System.out.println("### PersonAddressEntity Results ");
-	System.out.println("NER TruePoisitve: " + getTruePositive());
-	System.out.println("NER FalsePositive: " + getFalsePositive());
-	System.out.println("NER FalseNegative: " + getFalseNegative());
-	System.out.println("NER Precision: " + getPrecision());
-	System.out.println("NER Recall : " + getRecall());
-	System.out.println("NER F1: " + getF1Score());
+	System.out.println("CA TruePoisitve: " + getTruePositive());
+	System.out.println("CA FalsePositive: " + getFalsePositive());
+	System.out.println("CA FalseNegative: " + getFalseNegative());
+	System.out.println("CA Precision: " + getPrecision());
+	System.out.println("CA Recall : " + getRecall());
+	System.out.println("CA F1: " + getF1Score());
 	System.out.println("### PersonAddressEntity Results ");
     }
 
