@@ -18,5 +18,11 @@ To generate a new dataset, the following files should first be executed in `\pre
 
 However, it should be noted that these preprocessing was designed particularly for the source dataset.
 
-To run the pipelines the repository must be loaded `git clone https://github.com/luckybobo/hatespeech-sentiment-experiments.git` and the corresponding program must be executed under `/src/main/java/en/uni/due/haring/annotation/analyser/App.java`. The execution with the provided dataset leads to the results, which are discussed, analyzed and presented in the thesis. 
+### Run the Experimets
+To run the pipelines load the repository
+- `git clone https://github.com/luckybobo/hatespeech-sentiment-experiments.git`
+and 
+- execute `App.java` in `/src/main/java/en/uni/due/haring/annotation/analyser/`. 
+
+The execution with the provided dataset leads to the results, which are discussed, analyzed and presented in the thesis. 
 
