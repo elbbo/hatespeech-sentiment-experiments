@@ -15,7 +15,7 @@ public class TwitterSegmenter extends JCasAnnotator_ImplBase {
 
     @Override
     public void process(JCas aJCas) throws AnalysisEngineProcessException {
-	
+
 	Matcher m = TWITTER_USER.matcher(aJCas.getDocumentText());
 	while (m.find()) {
 	    TwitterUser twitterUser = new TwitterUser(aJCas);
@@ -23,8 +23,7 @@ public class TwitterSegmenter extends JCasAnnotator_ImplBase {
 	    twitterUser.setEnd(m.end());
 	    twitterUser.setCoveredText(m.group(0));
 	    twitterUser.addToIndexes();
-
 	}
-	
+
     }
 }

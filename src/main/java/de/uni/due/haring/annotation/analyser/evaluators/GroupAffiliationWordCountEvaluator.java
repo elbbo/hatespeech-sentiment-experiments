@@ -40,7 +40,6 @@ public class GroupAffiliationWordCountEvaluator implements AnnotationEvaluator {
 	    sentenceAnnotation.getPersonAddresses().stream()
 		    .filter(personAddress -> personAddress.hasNegativeSentiment() && !personAddress.isGroupAddress())
 		    .map(PersonAddress::getCoveredText).forEach(addressAnnotationsIndividual::add);
-
 	});
     }
 

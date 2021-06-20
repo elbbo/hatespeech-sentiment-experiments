@@ -1,10 +1,8 @@
 package de.uni.due.haring.annotation.analyser.evaluators;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
-import de.uni.due.haring.annotation.analyser.annotations.PersonAddress;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
@@ -66,7 +64,8 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 	System.out.println("Individuals Total w/negativeSentiment: " + totalIndividualsWithNegativeSentiment);
 	System.out.println("Individuals Average p/s: " + averageIndividualsPerSentence);
 	System.out.println("Individuals addressed through twitter: " + totalIndividualsAddressThroughTwitter);
-	System.out.println("Individuals addressed through twitter w/negativeSentiment: " + totalIndividualsAddressThroughTwitterWithNegativeSentiment);
+	System.out.println("Individuals addressed through twitter w/negativeSentiment: "
+		+ totalIndividualsAddressThroughTwitterWithNegativeSentiment);
     }
 
     private int getTotalPersonAdressIndividualsWithNegativeSentiment() {
@@ -107,24 +106,22 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 
     private int getTotalIndividualsAddressThroughTwitter() {
 	return sentenceAnnotations.stream()
-		.mapToInt(
-			sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().stream()
-				.filter(pa -> pa.getGroupAffiliation().label.equals(GroupAffiliationType.OTHER.label)
-					&& pa.getAddressType().equals("Individual") && pa.getCoveredText().startsWith("@"))
-				.collect(Collectors.toList()).size())
-		.sum();
-    }
-    
-    private int getTotalIndividualsAddressThroughTwitterWithNegativeSentiment() {
-	return sentenceAnnotations.stream()
-		.mapToInt(
-			sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().stream()
-				.filter(pa -> pa.getGroupAffiliation().label.equals(GroupAffiliationType.OTHER.label)
-					&& pa.getAddressType().equals("Individual") && pa.getCoveredText().startsWith("@") && pa.hasNegativeSentiment())
-				.collect(Collectors.toList()).size())
+		.mapToInt(sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().stream()
+			.filter(pa -> pa.getGroupAffiliation().label.equals(GroupAffiliationType.OTHER.label)
+				&& pa.getAddressType().equals("Individual") && pa.getCoveredText().startsWith("@"))
+			.collect(Collectors.toList()).size())
 		.sum();
     }
 
+    private int getTotalIndividualsAddressThroughTwitterWithNegativeSentiment() {
+	return sentenceAnnotations.stream()
+		.mapToInt(sentenceAnnotation -> sentenceAnnotation.getPersonAddresses().stream()
+			.filter(pa -> pa.getGroupAffiliation().label.equals(GroupAffiliationType.OTHER.label)
+				&& pa.getAddressType().equals("Individual") && pa.getCoveredText().startsWith("@")
+				&& pa.hasNegativeSentiment())
+			.collect(Collectors.toList()).size())
+		.sum();
+    }
 
     private int getTotalSentences() {
 	return sentenceAnnotations.size();

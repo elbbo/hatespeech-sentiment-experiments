@@ -20,18 +20,14 @@ import de.uni.due.haring.annotation.analyser.processors.GoldAnnotationProcessor;
 
 public class App {
     public static void main(String[] args) throws UIMAException, IOException {
-	System.out.println("Hello World!");
-
 	runAgreement();
-
-	runPipeline();
-
+	runExperiments();
     }
 
-    private static void runPipeline() throws UIMAException, IOException {
+    private static void runExperiments() throws UIMAException, IOException {
 	CollectionReader reader = CollectionReaderFactory.createReader(XmiReader.class, XmiReader.PARAM_LANGUAGE, "DE",
-		XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/set-1/", XmiReader.PARAM_PATTERNS, "*.xmi",
-		XmiReader.PARAM_TYPE_SYSTEM_FILE, "src/main/resources/set-1/TypeSystem.xml");
+		XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/set-2/", XmiReader.PARAM_PATTERNS, "*.xmi",
+		XmiReader.PARAM_TYPE_SYSTEM_FILE, "src/main/resources/set-2/TypeSystem.xml");
 
 	AnalysisEngineDescription goldAnnotationProcessor = AnalysisEngineFactory.createEngineDescription(
 		GoldAnnotationProcessor.class, GoldAnnotationProcessor.PARAM_ANNOTATION_DATA_INPUT_FILE_PATH,

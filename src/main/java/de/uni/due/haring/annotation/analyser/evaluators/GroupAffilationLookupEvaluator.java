@@ -19,7 +19,7 @@ import de.uni.due.haring.annotation.analyser.evaluators.matcher.MediaPressMatche
 import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
 import webanno.custom.Zielgruppenadressierung;
 
-public class GeneralPolticsGroupAffilationEvaluator extends EntityEvaluator implements AnnotationEvaluator {
+public class GroupAffilationLookupEvaluator extends EntityEvaluator implements AnnotationEvaluator {
 
     private JCas jCas;
     private ArrayList<GroupAffiliationMatcher> groupAffiliationMatchers;
@@ -39,7 +39,7 @@ public class GeneralPolticsGroupAffilationEvaluator extends EntityEvaluator impl
     private int trueNegativeGRE = 0;
     private int falseNegativeGRE = 0;
 
-    public GeneralPolticsGroupAffilationEvaluator() {
+    public GroupAffilationLookupEvaluator() {
 	groupAffiliationMatchers = new ArrayList<>();
 	try {
 	    initGroupAffilationMatchers();
@@ -48,7 +48,7 @@ public class GeneralPolticsGroupAffilationEvaluator extends EntityEvaluator impl
 	}
     }
 
-    public GeneralPolticsGroupAffilationEvaluator(JCas jCas) {
+    public GroupAffilationLookupEvaluator(JCas jCas) {
 	this.jCas = jCas;
     }
 

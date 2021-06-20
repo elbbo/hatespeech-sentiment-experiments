@@ -11,7 +11,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Wed May 05 23:22:10 CEST 2021
+ * Updated by JCasGen Mon May 24 22:13:39 CEST 2021
  * @generated */
 public class Zielgruppenadressierung_Type extends Annotation_Type {
   /** @generated */

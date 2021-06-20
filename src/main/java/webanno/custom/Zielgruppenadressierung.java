@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Wed May 05 23:22:10 CEST 2021
+ * Updated by JCasGen Mon May 24 22:13:39 CEST 2021
  * XML source: C:/Users/Stewie/eclipse-workspace/hatespeech-sentiment-experiments/src/main/resources/set-1/TypeSystem.xml
  * @generated */
 public class Zielgruppenadressierung extends Annotation {
