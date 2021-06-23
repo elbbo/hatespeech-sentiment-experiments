@@ -5,6 +5,7 @@ This repository contains the programs for the data processing and experiments of
 The following items should be installed in your system:
 - Java 14+
 	- e.g. [adoptopenjdk](https://adoptopenjdk.net/)
+- [Maven 3+](https://maven.apache.org/download.cgi)
 - [Python 3](https://www.python.org/downloads/) (preprocessing only)
 
 For the determination of the sentiments within the conducted experiments the Model [Broad-Coverage German Sentiment Classification Model for Dialog Systems](https://github.com/oliverguhr/german-sentiment) was used. Further, this process step was implemented using the library [dkpro-cassis](https://github.com/dkpro/dkpro-cassis). The pipelines for the determination of the agreement, the analysis of the surface structure and the majority of the experiments were implemented through the [DKPro framework](https://dkpro.github.io/).
@@ -21,8 +22,8 @@ However, it should be noted that these preprocessing was designed particularly f
 ### Run the Experimets
 To run the pipelines load the repository
 - `git clone https://github.com/luckybobo/hatespeech-sentiment-experiments.git`
-and 
-- execute `App.java` in `/src/main/java/en/uni/due/haring/annotation/analyser/`. 
+and build the project `mvn clean install`. 
+- Then execute `App.java` in `/src/main/java/en/uni/due/haring/annotation/analyser/`. 
 
 The execution with the provided dataset leads to the results, which are discussed, analyzed and presented in the thesis. 
 
