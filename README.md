@@ -11,7 +11,7 @@ The following items should be installed in your system:
 For the determination of the sentiments within the conducted experiments the Model [Broad-Coverage German Sentiment Classification Model for Dialog Systems](https://github.com/oliverguhr/german-sentiment) was used. Further, this process step was implemented using the library [dkpro-cassis](https://github.com/dkpro/dkpro-cassis). The pipelines for the determination of the agreement, the analysis of the surface structure and the majority of the experiments were implemented through the [DKPro framework](https://dkpro.github.io/).
 
 ### Configuration
-A pipeline is provided that determines the agreement of the respective coders. The corresponding annotated files are located under `/src/main/resources/agreement-*`. 
+A pipeline is provided that determines the agreement of the respective coders. The corresponding annotated files are located under `src/main/resources/agreement-*`. 
 
 To generate a new dataset, the following files should first be executed in `\preprocessing\dataset_collection`
 - `emoji_string_to_unicode.py` needs to be executed to replace emojis encoded as strings with their corresponding unicode representation (if necessary), and
@@ -23,7 +23,7 @@ However, it should be noted that these preprocessing was designed particularly f
 To run the pipelines load the repository
 - `git clone https://github.com/luckybobo/hatespeech-sentiment-experiments.git`
 and build the project `mvn clean install`. 
-- Then execute `App.java` in `/src/main/java/en/uni/due/haring/annotation/analyser/`. 
+- Then execute `App.java` in `src/main/java/en/uni/due/haring/annotation/analyser/`. 
 
 The execution with the provided dataset leads to the results, which are discussed, analyzed and presented in the thesis. The results of the experiments are located at `src/main/resources/results/*`.
 
