@@ -6,6 +6,7 @@ import org.apache.uima.fit.util.JCasUtil;
 
 import de.uni.due.haring.annotation.PredictedSentiment;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 
 public class NegativeSentimentSentencePredictionEvaluator extends EntityEvaluator implements AnnotationEvaluator {
@@ -37,15 +38,16 @@ public class NegativeSentimentSentencePredictionEvaluator extends EntityEvaluato
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("### SentenceSentimentPrediction Results ");
-	System.out.println("SEN TruePoisitve: " + getTruePositive());
-	System.out.println("SEN FalsePositive: " + getFalsePositive());
-	System.out.println("SEN FalseNegative: " + getFalseNegative());
-	System.out.println("SEN TrueNegative: " + getTrueNegative());
-	System.out.println("SEN Precision: " + getPrecision());
-	System.out.println("SEN Recall : " + getRecall());
-	System.out.println("SEN F1: " + getF1Score());
-	System.out.println("### SentenceSentimentPrediction Results ");
+	AppPrintService.printAutomatedDetection("");
+	AppPrintService.printAutomatedDetection("");
+	AppPrintService.printAutomatedDetection("Results of the experiments on layer 3 (Sentence Level) ");
+	AppPrintService.printAutomatedDetection("TruePoisitve: " + getTruePositive());
+	AppPrintService.printAutomatedDetection("FalsePositive: " + getFalsePositive());
+	AppPrintService.printAutomatedDetection("FalseNegative: " + getFalseNegative());
+	AppPrintService.printAutomatedDetection("TrueNegative: " + getTrueNegative());
+	AppPrintService.printAutomatedDetection("Precision: " + getPrecision());
+	AppPrintService.printAutomatedDetection("Recall : " + getRecall());
+	AppPrintService.printAutomatedDetection("F1: " + getF1Score());
     }
 
 }

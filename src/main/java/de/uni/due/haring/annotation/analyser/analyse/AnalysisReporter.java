@@ -18,6 +18,7 @@ import de.uni.due.haring.annotation.analyser.evaluators.OpenNLPPosTaggerEvaluato
 import de.uni.due.haring.annotation.analyser.evaluators.PersonAddressEntityEvaluator;
 import de.uni.due.haring.annotation.analyser.evaluators.PersonAddressEvaluator;
 import de.uni.due.haring.annotation.analyser.evaluators.TwitterEntityEvaluator;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 
 public class AnalysisReporter extends JCasAnnotator_ImplBase {
 
@@ -84,6 +85,7 @@ public class AnalysisReporter extends JCasAnnotator_ImplBase {
 	germEvalAnnotationEvaluator.printEvaluationResults();
 	groupAffiliationWordCountEvaluator.printEvaluationResults();
 
+	AppPrintService.printAutomatedDetection("Evaluations of the Automated Detection ...");
 	coreNlpNamedEntityEvaluator.printEvaluationResults();
 	openNlpPostTaggerEvaluator.printEvaluationResults();
 	twitterEntityEvaluator.printEvaluationResults();

@@ -1,0 +1,18 @@
+Determination of the agreement on layer 1 ...
+Full Agreement for Individual/Group: 0.5648363286611262
+Matching Agreement for Individual/Group: 0.9026787102122589
+Determination of the agreement on layer 2 ...
+Full Agreement for GroupAffiliation: 0.6791735231150143
+Matching Agreement for GroupAffiliation: 0.8838903045522373
+Determination of the agreement on layer 3 ...
+Full Agreement for NegativeSentiment: 0.46986570225152713
+Matching Agreement for NegativeSentiment: 0.780204690675406
+Determination of the agreement on layer 4 ...
+Full Agreement for ImplicitAddressing: 0.04403178820862207
+Matching Agreement for ImplicitAddressing: 0.5672227674190374
+
+
+Total annotations evaluated: 1788
+Annotations with position match: 1457 (81,49%)
+Annotations only from Annotator 1: 167 (9,34%)
+Annotations only from Annotator 2: 164 (9,17%)

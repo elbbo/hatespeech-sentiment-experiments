@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
 
@@ -50,22 +51,23 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("Sentences Total: " + totalSentences);
 
-	System.out.println("PersonAddresses Total: " + totalPersonAddresses);
-	System.out.println("PersonAddresses Total w/negativeSentiment: " + totalPersonAddressesWithNegativeSentiment);
-	System.out.println("PersonAddresses Average p/s: " + averagePersonAddressesPerSentence);
+	AppPrintService.printSurfaceStructure("Number of annotated tweets: " + totalSentences);
+	AppPrintService.printSurfaceStructure("Number of group and person addresses: " + totalPersonAddresses);
+	AppPrintService.printSurfaceStructure("Number of group and person addresses w/negativeSentiment: " + totalPersonAddressesWithNegativeSentiment);
+	AppPrintService.printSurfaceStructure("Number of group and person addresses average p/s: " + averagePersonAddressesPerSentence);
 
-	System.out.println("Groups Total: " + totalGroups);
-	System.out.println("Groups Total w/negativeSentiment: " + totalGroupsWithNegativeSentiment);
-	System.out.println("Groups Average p/s: " + averageGroupsPerSentence);
+	AppPrintService.printSurfaceStructure("Number of group addresses: " + totalGroups);
+	AppPrintService.printSurfaceStructure("Number of group addresses w/negativeSentiment: " + totalGroupsWithNegativeSentiment);
+	AppPrintService.printSurfaceStructure("Number of group addresses average p/s: " + averageGroupsPerSentence);
+	
+	AppPrintService.printSurfaceStructure("Number of person addresses: " + totalIndividuals);
+	AppPrintService.printSurfaceStructure("Number of person addresses w/negativeSentiment: " + totalIndividualsWithNegativeSentiment);
+	AppPrintService.printSurfaceStructure("Number of person addresses average p/s: " + averageIndividualsPerSentence);
+	
+	AppPrintService.printSurfaceStructure("Number of individuals addressed through twitter: " + totalIndividualsAddressThroughTwitter);
+	AppPrintService.printSurfaceStructure("Number of individuals addressed through twitter w/negativeSentiment: " + totalIndividualsAddressThroughTwitterWithNegativeSentiment);
 
-	System.out.println("Individuals Total: " + totalIndividuals);
-	System.out.println("Individuals Total w/negativeSentiment: " + totalIndividualsWithNegativeSentiment);
-	System.out.println("Individuals Average p/s: " + averageIndividualsPerSentence);
-	System.out.println("Individuals addressed through twitter: " + totalIndividualsAddressThroughTwitter);
-	System.out.println("Individuals addressed through twitter w/negativeSentiment: "
-		+ totalIndividualsAddressThroughTwitterWithNegativeSentiment);
     }
 
     private int getTotalPersonAdressIndividualsWithNegativeSentiment() {

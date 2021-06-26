@@ -24,6 +24,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.uni.due.haring.annotation.analyser.annotations.AnnotationUnit;
 import de.uni.due.haring.annotation.analyser.services.AnnotatorJCasService;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
 import webanno.custom.Zielgruppenadressierung;
 
@@ -229,47 +230,62 @@ public class AnalysisAgreementReporter extends JCasAnnotator_ImplBase {
 	CohenKappaAgreement kappaMatching = new CohenKappaAgreement(studyMatchingAgreement);
 	double agreementFull = kappaFull.calculateAgreement();
 	double agreementMatching = kappaMatching.calculateAgreement();
-	System.out.println("Full Agreement Individual/Group: " + agreementFull);
-	System.out.println("Matching Agreement Individual/Group: " + agreementMatching);
-	System.out.println("###");
+
+	AppPrintService.printAnnotatorAgreement("Determination of the agreement on layer 1 ...");
+	AppPrintService.printAnnotatorAgreement("Full Agreement for Individual/Group: " + agreementFull);
+	AppPrintService.printAnnotatorAgreement("Matching Agreement for Individual/Group: " + agreementMatching);
 
 	CohenKappaAgreement kappaFullGroupAffiliation = new CohenKappaAgreement(studyFullAgreementGroupAffiliation);
 	CohenKappaAgreement kappaMatchingGroupAffiliation = new CohenKappaAgreement(
 		studyMatchingAgreementGroupAffiliation);
 	double agreementFullGroupAffiliation = kappaFullGroupAffiliation.calculateAgreement();
 	double agreementMatchingGroupAffiliation = kappaMatchingGroupAffiliation.calculateAgreement();
-	System.out.println("Full Agreement GroupAffiliation: " + agreementFullGroupAffiliation);
-	System.out.println("Matching Agreement GroupAffiliation: " + agreementMatchingGroupAffiliation);
-	System.out.println("###");
+
+	AppPrintService.printAnnotatorAgreement("Determination of the agreement on layer 2 ...");
+	AppPrintService
+		.printAnnotatorAgreement("Full Agreement for GroupAffiliation: " + agreementFullGroupAffiliation);
+	AppPrintService.printAnnotatorAgreement(
+		"Matching Agreement for GroupAffiliation: " + agreementMatchingGroupAffiliation);
 
 	CohenKappaAgreement kappaFullNegativeSentiment = new CohenKappaAgreement(studyFullAgreementNegativeSentiment);
 	CohenKappaAgreement kappaMatchingNegativeSentiment = new CohenKappaAgreement(
 		studyMatchingAgreementNegativeSentiment);
 	double agreementFullNegativeSentiment = kappaFullNegativeSentiment.calculateAgreement();
 	double agreementMatchingNegativeSentiment = kappaMatchingNegativeSentiment.calculateAgreement();
-	System.out.println("Full Agreement NegativeSentiment: " + agreementFullNegativeSentiment);
-	System.out.println("Matching Agreement NegativeSentiment: " + agreementMatchingNegativeSentiment);
-	System.out.println("###");
+
+	AppPrintService.printAnnotatorAgreement("Determination of the agreement on layer 3 ...");
+	AppPrintService
+		.printAnnotatorAgreement("Full Agreement for NegativeSentiment: " + agreementFullNegativeSentiment);
+	AppPrintService.printAnnotatorAgreement(
+		"Matching Agreement for NegativeSentiment: " + agreementMatchingNegativeSentiment);
 
 	CohenKappaAgreement kappaFullImplicitAddressing = new CohenKappaAgreement(studyFullAgreementImplicitAddressing);
 	CohenKappaAgreement kappaMatchingImplicitAddressing = new CohenKappaAgreement(
 		studyMatchingAgreementImplicitAddressing);
 	double agreementFullImplicitAddressing = kappaFullImplicitAddressing.calculateAgreement();
 	double agreementMatchingImplicitAddressing = kappaMatchingImplicitAddressing.calculateAgreement();
-	System.out.println("Full Agreement ImplicitAddressing: " + agreementFullImplicitAddressing);
-	System.out.println("Matching Agreement ImplicitAddressing: " + agreementMatchingImplicitAddressing);
-	System.out.println("###");
+
+	AppPrintService.printAnnotatorAgreement("Determination of the agreement on layer 4 ...");
+	AppPrintService
+		.printAnnotatorAgreement("Full Agreement for ImplicitAddressing: " + agreementFullImplicitAddressing);
+	AppPrintService.printAnnotatorAgreement(
+		"Matching Agreement for ImplicitAddressing: " + agreementMatchingImplicitAddressing);
+	AppPrintService.printAnnotatorAgreement("");
+	AppPrintService.printAnnotatorAgreement("");
 
 	DecimalFormat df = new DecimalFormat("#.##");
-	System.out.println("Annotations total: " + annotationUnits.size());
+	AppPrintService.printAnnotatorAgreement("Total annotations evaluated: " + annotationUnits.size());
 	double percentageAgreed = ((double) countAgreedAnnotations / annotationUnits.size()) * 100;
-	System.out.println("Annotations agreed: " + countAgreedAnnotations + " (" + df.format(percentageAgreed) + "%)");
+	AppPrintService.printAnnotatorAgreement("Annotations with position match: " + countAgreedAnnotations + " ("
+		+ df.format(percentageAgreed) + "%)");
 
 	double percentageAnno1 = ((double) countDisagreedAnno1 / annotationUnits.size()) * 100;
-	System.out.println("Annotations anno1: " + countDisagreedAnno1 + " (" + df.format(percentageAnno1) + "%)");
+	AppPrintService.printAnnotatorAgreement(
+		"Annotations only from Annotator 1: " + countDisagreedAnno1 + " (" + df.format(percentageAnno1) + "%)");
 
 	double percentageAnno2 = ((double) countDisagreedAnno2 / annotationUnits.size()) * 100;
-	System.out.println("Annotations anno2: " + countDisagreedAnno2 + " (" + df.format(percentageAnno2) + "%)");
+	AppPrintService.printAnnotatorAgreement(
+		"Annotations only from Annotator 2: " + countDisagreedAnno2 + " (" + df.format(percentageAnno2) + "%)");
 
     }
 

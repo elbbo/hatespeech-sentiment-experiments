@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import de.uni.due.haring.annotation.analyser.annotations.PersonAddress;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 
 public class ImplicitAnnotationEvaluator implements AnnotationEvaluator {
@@ -42,16 +43,24 @@ public class ImplicitAnnotationEvaluator implements AnnotationEvaluator {
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("Explicit Total: " + totalExplicit);
-	System.out.println("Explicit Total w/negativeSentiment: " + totalExplicitWithNegativeSentiment);
+	AppPrintService.printSurfaceStructure("");
+	AppPrintService.printSurfaceStructure("");
 
-	System.out.println("Implicit Total: " + totalImplicit);
-	System.out.println("Implicit Total w/negativeSentiment: " + totalImplicitWithNegativeSentiment);
-	System.out.println("Implicit Total w/negativeSentiment / no explicit in Sentence: "
-		+ totalImplicitWithNegativeSentimentNoExplicit);
+	AppPrintService.printSurfaceStructure("Number of explicit addressings Total: " + totalExplicit);
+	AppPrintService.printSurfaceStructure(
+		"Number of explicit addressings Total w/negativeSentiment: " + totalExplicitWithNegativeSentiment);
 
-	System.out.println("Implicit Total groups: " + totalImplicitGroupAnnotations);
-	// implicitIndividualAnnotations.forEach(pa -> System.out.println(pa.getCoveredText()));
+	AppPrintService.printSurfaceStructure("Number of implicit addressings Total: " + totalImplicit);
+	AppPrintService.printSurfaceStructure(
+		"Number of implicit addressings Total w/negativeSentiment: " + totalImplicitWithNegativeSentiment);
+	AppPrintService.printSurfaceStructure(
+		"Number of implicit addressings Total w/negativeSentiment / no explicit in Sentence: "
+			+ totalImplicitWithNegativeSentimentNoExplicit);
+
+	AppPrintService
+		.printSurfaceStructure("Number of implicit group addressings Total: " + totalImplicitGroupAnnotations);
+	// implicitIndividualAnnotations.forEach(pa ->
+	// System.out.println(pa.getCoveredText()));
     }
 
     private void calculateImplicitAnnotationsWithNegativeSentimentNoExplicit() {

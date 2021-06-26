@@ -7,6 +7,7 @@ import org.dkpro.statistics.agreement.coding.CodingAnnotationStudy;
 import org.dkpro.statistics.agreement.coding.CohenKappaAgreement;
 
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 
 public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
@@ -44,17 +45,21 @@ public class GermEvalAnnotationEvaluator implements AnnotationEvaluator {
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("Sentences Total Offensive: " + totalSentencesOffensiveGold);
-	System.out.println("Sentences Total w/negativeSentiment: " + totalSentencesNegativeSentiment);
-	System.out.println("Sentences Total offensive but no negative sentiment: "
+	AppPrintService.printSurfaceStructure("");
+	AppPrintService.printSurfaceStructure("");
+
+	AppPrintService.printSurfaceStructure("Sentences Total Offensive: " + totalSentencesOffensiveGold);
+	AppPrintService
+		.printSurfaceStructure("Sentences Total w/negativeSentiment: " + totalSentencesNegativeSentiment);
+	AppPrintService.printSurfaceStructure("Sentences Total offensive but no negative sentiment: "
 		+ totalSentencesOffensiveAndNoNegativeSentiment);
-	System.out.println("Sentences Total not offensive but negative sentiment: "
+	AppPrintService.printSurfaceStructure("Sentences Total not offensive but negative sentiment: "
 		+ totalSentencesNotOffensiveAndNegativeSentiment);
-	System.out.println("Sentences Total not offensive and no negative sentiment: "
+	AppPrintService.printSurfaceStructure("Sentences Total not offensive and no negative sentiment: "
 		+ totalSentencesNotOffensiveAndNoNegativeSentiment);
 
-	System.out.println("Coverage Offensive Annotations: " + coverageOffensiveAnnotations);
-	System.out.println("Kappa Agreement: " + kappaAgreement);
+	AppPrintService.printSurfaceStructure("Coverage Offensive Annotations: " + coverageOffensiveAnnotations);
+	AppPrintService.printSurfaceStructure("Kappa Agreement: " + kappaAgreement);
 
     }
 

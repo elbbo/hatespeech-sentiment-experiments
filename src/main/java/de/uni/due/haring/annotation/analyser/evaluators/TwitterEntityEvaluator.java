@@ -8,6 +8,7 @@ import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.uni.due.haring.annotation.TwitterUser;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import webanno.custom.Zielgruppenadressierung;
 
 public class TwitterEntityEvaluator extends EntityEvaluator implements AnnotationEvaluator {
@@ -42,13 +43,12 @@ public class TwitterEntityEvaluator extends EntityEvaluator implements Annotatio
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("### TwitterEntity Results ");
-	System.out.println("TW TruePoisitve: " + getTruePositive());
-	System.out.println("TW FalsePositive: " + getFalsePositive());
-	System.out.println("TW FalseNegative: " + getFalseNegative());
-	System.out.println("TW Precision: " + getPrecision());
-	System.out.println("TW Recall : " + getRecall());
-	System.out.println("TW F1: " + getF1Score());
-	System.out.println("### TwitterEntity Results ");
+	AppPrintService.printAutomatedDetection("Results of the Twitter user Experiment ...");
+	AppPrintService.printAutomatedDetection("TW TruePoisitve: " + getTruePositive());
+	AppPrintService.printAutomatedDetection("TW FalsePositive: " + getFalsePositive());
+	AppPrintService.printAutomatedDetection("TW FalseNegative: " + getFalseNegative());
+	AppPrintService.printAutomatedDetection("TW Precision: " + getPrecision());
+	AppPrintService.printAutomatedDetection("TW Recall : " + getRecall());
+	AppPrintService.printAutomatedDetection("TW F1: " + getF1Score());
     }
 }

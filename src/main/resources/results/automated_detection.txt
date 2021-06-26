@@ -1,0 +1,76 @@
+Evaluations of the Automated Detection ...
+Results of the Named Entity Recognition Experiment ...
+NER TruePoisitve: 727
+NER FalsePositive: 1377
+NER FalseNegative: 3872
+NER Precision: 0.34553233
+NER Recall : 0.15807784
+NER F1: 0.21691781
+Results of the Part of Speech Experiment ...
+PoS TruePoisitve: 1716
+PoS FalsePositive: 5162
+PoS FalseNegative: 2883
+PoS Precision: 0.24949113
+PoS Recall : 0.3731246
+PoS F1: 0.29903287
+Results of the Twitter user Experiment ...
+TW TruePoisitve: 2130
+TW FalsePositive: 11
+TW FalseNegative: 2469
+TW Precision: 0.9948622
+TW Recall : 0.46314415
+TW F1: 0.6320475
+Results of the Combined Approach on Layer 1 ...
+CA TruePoisitve: 3953
+CA FalsePositive: 6550
+CA FalseNegative: 646
+CA Precision: 0.37636864
+CA Recall : 0.8595347
+CA F1: 0.5235069
+
+
+Results of the experiments on layer 2 (dictionary based approach) ...
+Evaluations for targeted group <GeneralPoltics> 
+TruePoisitve: 129
+FalsePositive: 47
+FalseNegative: 283
+TrueNegative: 4183
+Precision: 0.73295456
+Recall : 0.3131068
+F1: 0.4387755
+
+Evaluations for targeted group <MediaPress> 
+TruePoisitve: 85
+FalsePositive: 4
+FalseNegative: 143
+TrueNegative: 4410
+Precision: 0.9550562
+Recall : 0.37280703
+F1: 0.5362776
+
+Evaluations for targeted group <Env. Movement/Green> 
+TruePoisitve: 30
+FalsePositive: 15
+FalseNegative: 101
+TrueNegative: 4496
+Precision: 0.6666667
+Recall : 0.22900763
+F1: 0.34090906
+
+
+Results of the experiments on layer 3 (Sentence Level) 
+TruePoisitve: 425
+FalsePositive: 187
+FalseNegative: 521
+TrueNegative: 367
+Precision: 0.6944444
+Recall : 0.44926006
+F1: 0.54557127
+Results of the experiments on layer 3 (Annotation Level) 
+TruePoisitve: 753
+FalsePositive: 1062
+FalseNegative: 900
+TrueNegative: 1970
+Precision: 0.41487604
+Recall : 0.45553538
+F1: 0.43425605

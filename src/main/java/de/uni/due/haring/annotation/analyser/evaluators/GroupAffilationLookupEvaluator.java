@@ -16,6 +16,7 @@ import de.uni.due.haring.annotation.analyser.evaluators.matcher.EnvironmentalMov
 import de.uni.due.haring.annotation.analyser.evaluators.matcher.GeneralPoliticiansMatcher;
 import de.uni.due.haring.annotation.analyser.evaluators.matcher.GroupAffiliationMatcher;
 import de.uni.due.haring.annotation.analyser.evaluators.matcher.MediaPressMatcher;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
 import webanno.custom.Zielgruppenadressierung;
 
@@ -166,41 +167,45 @@ public class GroupAffilationLookupEvaluator extends EntityEvaluator implements A
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("### GeneralPoltics Results ");
+	AppPrintService.printAutomatedDetection("");
+	AppPrintService.printAutomatedDetection("");
+	AppPrintService
+		.printAutomatedDetection("Results of the experiments on layer 2 (dictionary based approach) ...");
+
+	AppPrintService.printAutomatedDetection("Evaluations for targeted group <GeneralPoltics> ");
 	float preGP = getPrecision(truePositiveGP, falsePositiveGP);
 	float recGP = getRecall(truePositiveGP, falseNegativeGP);
-	System.out.println("LA TruePoisitve: " + truePositiveGP);
-	System.out.println("LA FalsePositive: " + falsePositiveGP);
-	System.out.println("LA FalseNegative: " + falseNegativeGP);
-	System.out.println("LA TrueNegative: " + trueNegativeGP);
-	System.out.println("LA Precision: " + preGP);
-	System.out.println("LA Recall : " + recGP);
-	System.out.println("LA F1: " + getF1Score(preGP, recGP));
-	System.out.println("### GeneralPoltics Results ");
+	AppPrintService.printAutomatedDetection("TruePoisitve: " + truePositiveGP);
+	AppPrintService.printAutomatedDetection("FalsePositive: " + falsePositiveGP);
+	AppPrintService.printAutomatedDetection("FalseNegative: " + falseNegativeGP);
+	AppPrintService.printAutomatedDetection("TrueNegative: " + trueNegativeGP);
+	AppPrintService.printAutomatedDetection("Precision: " + preGP);
+	AppPrintService.printAutomatedDetection("Recall : " + recGP);
+	AppPrintService.printAutomatedDetection("F1: " + getF1Score(preGP, recGP));
+	AppPrintService.printAutomatedDetection("");
 
-	System.out.println("### MediaPress Results ");
+	AppPrintService.printAutomatedDetection("Evaluations for targeted group <MediaPress> ");
 	float preMP = getPrecision(truePositiveMP, falsePositiveMP);
 	float recMP = getRecall(truePositiveMP, falseNegativeMP);
-	System.out.println("LA TruePoisitve: " + truePositiveMP);
-	System.out.println("LA FalsePositive: " + falsePositiveMP);
-	System.out.println("LA FalseNegative: " + falseNegativeMP);
-	System.out.println("LA TrueNegative: " + trueNegativeMP);
-	System.out.println("LA Precision: " + preMP);
-	System.out.println("LA Recall : " + recMP);
-	System.out.println("LA F1: " + getF1Score(preMP, recMP));
-	System.out.println("### MediaPress Results ");
+	AppPrintService.printAutomatedDetection("TruePoisitve: " + truePositiveMP);
+	AppPrintService.printAutomatedDetection("FalsePositive: " + falsePositiveMP);
+	AppPrintService.printAutomatedDetection("FalseNegative: " + falseNegativeMP);
+	AppPrintService.printAutomatedDetection("TrueNegative: " + trueNegativeMP);
+	AppPrintService.printAutomatedDetection("Precision: " + preMP);
+	AppPrintService.printAutomatedDetection("Recall : " + recMP);
+	AppPrintService.printAutomatedDetection("F1: " + getF1Score(preMP, recMP));
+	AppPrintService.printAutomatedDetection("");
 
-	System.out.println("### Greens Results ");
+	AppPrintService.printAutomatedDetection("Evaluations for targeted group <Env. Movement/Green> ");
 	float preGRE = getPrecision(truePositiveGRE, falsePositiveGRE);
 	float recGRE = getRecall(truePositiveGRE, falseNegativeGRE);
-	System.out.println("LA TruePoisitve: " + truePositiveGRE);
-	System.out.println("LA FalsePositive: " + falsePositiveGRE);
-	System.out.println("LA FalseNegative: " + falseNegativeGRE);
-	System.out.println("LA TrueNegative: " + trueNegativeGRE);
-	System.out.println("LA Precision: " + preGRE);
-	System.out.println("LA Recall : " + recGRE);
-	System.out.println("LA F1: " + getF1Score(preGRE, recGRE));
-	System.out.println("### Greens Results ");
+	AppPrintService.printAutomatedDetection("TruePoisitve: " + truePositiveGRE);
+	AppPrintService.printAutomatedDetection("FalsePositive: " + falsePositiveGRE);
+	AppPrintService.printAutomatedDetection("FalseNegative: " + falseNegativeGRE);
+	AppPrintService.printAutomatedDetection("TrueNegative: " + trueNegativeGRE);
+	AppPrintService.printAutomatedDetection("Precision: " + preGRE);
+	AppPrintService.printAutomatedDetection("Recall : " + recGRE);
+	AppPrintService.printAutomatedDetection("F1: " + getF1Score(preGRE, recGRE));
 
     }
 

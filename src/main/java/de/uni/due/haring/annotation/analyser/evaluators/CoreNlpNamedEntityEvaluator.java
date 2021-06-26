@@ -9,6 +9,7 @@ import org.apache.uima.jcas.JCas;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import webanno.custom.Zielgruppenadressierung;
 
 public class CoreNlpNamedEntityEvaluator extends EntityEvaluator implements AnnotationEvaluator {
@@ -48,13 +49,13 @@ public class CoreNlpNamedEntityEvaluator extends EntityEvaluator implements Anno
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("### NER Results ");
-	System.out.println("NER TruePoisitve: " + getTruePositive());
-	System.out.println("NER FalsePositive: " + getFalsePositive());
-	System.out.println("NER FalseNegative: " + getFalseNegative());
-	System.out.println("NER Precision: " + getPrecision());
-	System.out.println("NER Recall : " + getRecall());
-	System.out.println("NER F1: " + getF1Score());
-	System.out.println("### NER Results ");
+	AppPrintService.printAutomatedDetection("Results of the Named Entity Recognition Experiment ...");
+	AppPrintService.printAutomatedDetection("NER TruePoisitve: " + getTruePositive());
+	AppPrintService.printAutomatedDetection("NER FalsePositive: " + getFalsePositive());
+	AppPrintService.printAutomatedDetection("NER FalseNegative: " + getFalseNegative());
+	AppPrintService.printAutomatedDetection("NER Precision: " + getPrecision());
+	AppPrintService.printAutomatedDetection("NER Recall : " + getRecall());
+	AppPrintService.printAutomatedDetection("NER F1: " + getF1Score());
+
     }
 }

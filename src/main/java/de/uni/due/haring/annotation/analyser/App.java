@@ -17,9 +17,12 @@ import de.uni.due.haring.annotation.analyser.analyse.AnalysisAgreementReporter;
 import de.uni.due.haring.annotation.analyser.analyse.AnalysisReporter;
 import de.uni.due.haring.annotation.analyser.annotations.TwitterSegmenter;
 import de.uni.due.haring.annotation.analyser.processors.GoldAnnotationProcessor;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 
 public class App {
     public static void main(String[] args) throws UIMAException, IOException {
+	AppPrintService.initialize();
+
 	runAgreement();
 	runExperiments();
     }

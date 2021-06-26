@@ -3,14 +3,10 @@ package de.uni.due.haring.annotation.analyser.evaluators;
 import java.util.List;
 
 import com.google.common.collect.EnumMultiset;
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.ImmutableMultiset;
-import com.google.common.collect.ImmutableSortedMultiset;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.Multisets;
 
 import de.uni.due.haring.annotation.analyser.annotations.PersonAddress;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 import de.uni.due.haring.annotation.analyser.types.GroupAffiliationType;
 
@@ -69,29 +65,29 @@ public class GroupAffiliationEvaluator implements AnnotationEvaluator {
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("Targeted Groups: " + groupAffiliationSet.toString());
-	System.out.println("Targeted Groups w/negSentiment: " + groupAffiliationWithNegativeSentimentSet.toString());
 
-	System.out.println("Group address - Targeted Groups: " + groupsGroupAffiliationSet.toString());
-	System.out.println("Group address - Targeted Groups w/negSentiment: "
+	AppPrintService.printSurfaceStructure("Targeted Groups: " + groupAffiliationSet.toString());
+	AppPrintService.printSurfaceStructure(
+		"Targeted Groups w/negSentiment: " + groupAffiliationWithNegativeSentimentSet.toString());
+	AppPrintService
+		.printSurfaceStructure("Group address - Targeted Groups: " + groupsGroupAffiliationSet.toString());
+	AppPrintService.printSurfaceStructure("Group address - Targeted Groups w/negSentiment: "
 		+ groupsGroupAffiliationWithNegativeSentimentSet.toString());
 
-	System.out.println("Individual address - Targeted Groups: " + individualsGroupAffiliationSet.toString());
-	System.out.println("Individual address - Targeted Groups w/negSentiment: "
+	AppPrintService.printSurfaceStructure(
+		"Individual address - Targeted Groups: " + individualsGroupAffiliationSet.toString());
+	AppPrintService.printSurfaceStructure("Individual address - Targeted Groups w/negSentiment: "
 		+ individualsGroupAffiliationWithNegativeSentimentSet.toString());
 
 	float sumTotal = groupAffiliationSet.entrySet().stream().mapToInt(i -> i.getCount()).sum();
-	System.out.println("###");
-	System.out.println("###");
-	System.out.println("###");
-	System.out.println("Total: " + sumTotal);
+	AppPrintService.printSurfaceStructure("");
+	AppPrintService.printSurfaceStructure("");
+	AppPrintService.printSurfaceStructure("Evaluation on targeted groups by addressing ... ");
+	AppPrintService.printSurfaceStructure("Total: " + sumTotal);
 	groupAffiliationSet.entrySet().stream().forEach(entry -> {
-	    System.out.println(entry.getElement().label + ": " + entry.getCount() + " ("
+	    AppPrintService.printSurfaceStructure(entry.getElement().label + ": " + entry.getCount() + " ("
 		    + (entry.getCount() / sumTotal) * 100 + ")");
 	});
-	System.out.println("###");
-	System.out.println("###");
-	System.out.println("###");
 
     }
 

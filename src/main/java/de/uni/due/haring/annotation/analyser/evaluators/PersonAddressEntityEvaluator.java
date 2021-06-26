@@ -13,6 +13,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.uni.due.haring.annotation.TwitterUser;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import webanno.custom.Zielgruppenadressierung;
 
 public class PersonAddressEntityEvaluator extends EntityEvaluator implements AnnotationEvaluator {
@@ -60,14 +61,13 @@ public class PersonAddressEntityEvaluator extends EntityEvaluator implements Ann
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("### PersonAddressEntity Results ");
-	System.out.println("CA TruePoisitve: " + getTruePositive());
-	System.out.println("CA FalsePositive: " + getFalsePositive());
-	System.out.println("CA FalseNegative: " + getFalseNegative());
-	System.out.println("CA Precision: " + getPrecision());
-	System.out.println("CA Recall : " + getRecall());
-	System.out.println("CA F1: " + getF1Score());
-	System.out.println("### PersonAddressEntity Results ");
+	AppPrintService.printAutomatedDetection("Results of the Combined Approach on Layer 1 ...");
+	AppPrintService.printAutomatedDetection("CA TruePoisitve: " + getTruePositive());
+	AppPrintService.printAutomatedDetection("CA FalsePositive: " + getFalsePositive());
+	AppPrintService.printAutomatedDetection("CA FalseNegative: " + getFalseNegative());
+	AppPrintService.printAutomatedDetection("CA Precision: " + getPrecision());
+	AppPrintService.printAutomatedDetection("CA Recall : " + getRecall());
+	AppPrintService.printAutomatedDetection("CA F1: " + getF1Score());
     }
 
 }

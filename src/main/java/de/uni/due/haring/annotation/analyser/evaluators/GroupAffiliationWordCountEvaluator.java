@@ -9,6 +9,7 @@ import com.google.common.collect.Multisets;
 
 import de.uni.due.haring.annotation.analyser.annotations.PersonAddress;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
 
 public class GroupAffiliationWordCountEvaluator implements AnnotationEvaluator {
@@ -52,10 +53,12 @@ public class GroupAffiliationWordCountEvaluator implements AnnotationEvaluator {
 	ImmutableMultiset<String> addressAnnotationsIndividualSorted = Multisets
 		.copyHighestCountFirst(addressAnnotationsIndividual);
 
-	System.out.println("### Counts");
-	System.out.println("ALL: " + addressAnnotationsSorted.toString());
-	System.out.println("GRP: " + addressAnnotationsGroupsSorted.toString());
-	System.out.println("IND: " + addressAnnotationsIndividualSorted.toString());
+	AppPrintService.printSurfaceStructure("");
+	AppPrintService.printSurfaceStructure("");
+	AppPrintService.printSurfaceStructure("Breakdown of the annotated words ...");
+	AppPrintService.printSurfaceStructure("ALL: " + addressAnnotationsSorted.toString());
+	AppPrintService.printSurfaceStructure("GRP: " + addressAnnotationsGroupsSorted.toString());
+	AppPrintService.printSurfaceStructure("IND: " + addressAnnotationsIndividualSorted.toString());
     }
 
 }

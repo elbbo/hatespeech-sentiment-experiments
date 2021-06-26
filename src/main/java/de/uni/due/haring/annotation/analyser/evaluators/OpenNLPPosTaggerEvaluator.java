@@ -8,6 +8,7 @@ import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
+import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import webanno.custom.Zielgruppenadressierung;
 
 public class OpenNLPPosTaggerEvaluator extends EntityEvaluator implements AnnotationEvaluator {
@@ -44,14 +45,13 @@ public class OpenNLPPosTaggerEvaluator extends EntityEvaluator implements Annota
 
     @Override
     public void printEvaluationResults() {
-	System.out.println("### POS Results ");
-	System.out.println("PoS TruePoisitve: " + getTruePositive());
-	System.out.println("PoS FalsePositive: " + getFalsePositive());
-	System.out.println("PoS FalseNegative: " + getFalseNegative());
-	System.out.println("PoS Precision: " + getPrecision());
-	System.out.println("PoS Recall : " + getRecall());
-	System.out.println("PoS F1: " + getF1Score());
-	System.out.println("### POS Results ");
+	AppPrintService.printAutomatedDetection("Results of the Part of Speech Experiment ...");
+	AppPrintService.printAutomatedDetection("PoS TruePoisitve: " + getTruePositive());
+	AppPrintService.printAutomatedDetection("PoS FalsePositive: " + getFalsePositive());
+	AppPrintService.printAutomatedDetection("PoS FalseNegative: " + getFalseNegative());
+	AppPrintService.printAutomatedDetection("PoS Precision: " + getPrecision());
+	AppPrintService.printAutomatedDetection("PoS Recall : " + getRecall());
+	AppPrintService.printAutomatedDetection("PoS F1: " + getF1Score());
     }
 
 }
