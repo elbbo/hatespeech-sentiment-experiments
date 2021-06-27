@@ -1,6 +1,8 @@
 # Analysis of Group and Person Address Annotations and negative Sentiments as potential Hate Speech Indicators
-This repository contains the programs for the data processing and experiments of the master thesis "Annotation and analysis of group and person address and negative sentiments as potential hate speech indicators", which was conducted at the University of Duisburg-Essen. It includes the programs for the creation of the underlying dataset which was loaded into the tool [INCEpTION](https://github.com/inception-project/inception) for an annotation with the proposed annotation scheme. The data used for the annotations and experiments was derived from the [Germeval Task 2, 2019 - Shared Task on the Identification of Offensive Language](https://projects.fzai.h-da.de/iggsa/). In addition, two pipelines are provided. An agreement on the annotations of the respective coders is determined to validate the reliability of the presented annotation scheme. Furthermore, the surface structure of the resulting dataset is evaluated and the experiments for an automated detection of the scheme are applied.
+This repository contains the programs for the data processing and experiments of the master thesis "Annotation and analysis of group and person address and negative sentiments as potential hate speech indicators", which was conducted at the University of Duisburg-Essen. It includes the programs for the creation of the underlying dataset which was loaded into the tool [INCEpTION](https://github.com/inception-project/inception) for an annotation with the proposed annotation scheme. The data used for the annotations and experiments was derived from the [Germeval Task 2, 2019 - Shared Task on the Identification of Offensive Language](https://projects.fzai.h-da.de/iggsa/). In addition, two pipelines are provided. An agreement on the annotations of the respective annotators is determined to validate the reliability of the presented annotation scheme. Furthermore, the surface structure of the resulting dataset is evaluated and the experiments for an automated detection of the scheme are applied.
 
+The annotated files in tsv format can be found at `src\main\resources\tsv-files`. The files used for the experiments in XMI format are located at `src\main\resources\set-2.
+`
 ### Prerequisites & Resources
 The following items should be installed in your system:
 - Java 14+
@@ -26,4 +28,9 @@ and build the project `mvn clean install`.
 - Then execute `App.java` in `src/main/java/en/uni/due/haring/annotation/analyser/`. 
 
 The execution with the provided dataset leads to the results, which are discussed, analyzed and presented in the thesis. The results of the experiments are located at `src/main/resources/results/*`.
+
+#### License
+The present project is distributed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de), just like the GermEval dataset on which this thesis is based.
+
+
 
