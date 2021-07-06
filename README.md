@@ -10,7 +10,7 @@ The following items should be installed in your system:
 - [Maven 3+](https://maven.apache.org/download.cgi)
 - [Python 3](https://www.python.org/downloads/) (preprocessing only)
 
-For the determination of the sentiments within the conducted experiments the Model [Broad-Coverage German Sentiment Classification Model for Dialog Systems](https://github.com/oliverguhr/german-sentiment) was used. Further, this process step was implemented using the library [dkpro-cassis](https://github.com/dkpro/dkpro-cassis). The pipelines for the determination of the agreement, the analysis of the surface structure and the majority of the experiments were implemented through the [DKPro framework](https://dkpro.github.io/).
+For the determination of the sentiments within the conducted experiments the [Broad-Coverage German Sentiment Classification Model for Dialog Systems](https://github.com/oliverguhr/german-sentiment) was used. Further, this process step was implemented using the library [dkpro-cassis](https://github.com/dkpro/dkpro-cassis). The pipelines for the determination of the agreement, the analysis of the surface structure and the majority of the experiments were implemented through the [DKPro framework](https://dkpro.github.io/).
 
 ### Configuration
 A pipeline is provided that determines the agreement of the respective coders. The corresponding annotated files are located under `src/main/resources/agreement-*`. 
