@@ -1,8 +1,8 @@
 # Analysis of Group and Person Address Annotations and negative Sentiments as potential Hate Speech Indicators
 This repository contains the programs for the data processing and experiments of the master thesis "Annotation and analysis of group and person address and negative sentiments as potential hate speech indicators", which was conducted at the University of Duisburg-Essen. It includes the programs for the creation of the underlying dataset which was loaded into the tool [INCEpTION](https://github.com/inception-project/inception) for an annotation with the proposed annotation scheme. The data used for the annotations and experiments was derived from the [Germeval Task 2, 2019 - Shared Task on the Identification of Offensive Language](https://projects.fzai.h-da.de/iggsa/). In addition, two pipelines are provided. An agreement on the annotations of the respective annotators is determined to validate the reliability of the presented annotation scheme. Furthermore, the surface structure of the resulting dataset is evaluated and the experiments for an automated detection of the scheme are applied.
 
-The annotated files in tsv format can be found at `src\main\resources\tsv-files`. The files used for the experiments in XMI format are located at `src\main\resources\set-2.
-`
+The annotated files in tsv format can be found at `src\main\resources\tsv-files`. The files used for the experiments in XMI format are located at `src\main\resources\set-2.` The corresponding TypeSystem.xml is stored there as well.
+
 ### Prerequisites & Resources
 The following items should be installed in your system:
 - Java 14+
