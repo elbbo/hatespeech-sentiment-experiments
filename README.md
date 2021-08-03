@@ -24,6 +24,7 @@ However, it should be noted that these preprocessing was designed particularly f
 ### Run the Experimets
 To run the pipelines load the repository
 - `git clone https://github.com/luckybobo/hatespeech-sentiment-experiments.git`. 
+- Import as project into your IDE.
 - Then execute `App.java` in `src/main/java/en/uni/due/haring/annotation/analyser/`. 
 
 The execution with the provided dataset leads to the results, which are discussed, analyzed and presented in the thesis. The results of the experiments are located at `src/main/resources/results/*`.
