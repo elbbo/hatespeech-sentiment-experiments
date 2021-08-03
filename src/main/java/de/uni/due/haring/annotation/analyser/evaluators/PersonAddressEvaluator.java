@@ -3,6 +3,7 @@ package de.uni.due.haring.annotation.analyser.evaluators;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import de.uni.due.haring.annotation.analyser.annotations.PersonAddress;
 import de.uni.due.haring.annotation.analyser.annotations.SentenceAnnotation;
 import de.uni.due.haring.annotation.analyser.services.AppPrintService;
 import de.uni.due.haring.annotation.analyser.services.SentenceAnnotationService;
@@ -27,6 +28,9 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
     private float averageGroupsPerSentence;
     private float averageIndividualsPerSentence;
 
+    private int totalSentencesWithLeftAndGreenTargets;
+    private int totalSentencesWithLeftAndGreenTargetsBothNegative;
+
     public PersonAddressEvaluator() {
 	this.sentenceAnnotations = SentenceAnnotationService.getSentencesAnnotations();
     }
@@ -47,6 +51,8 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 	averageIndividualsPerSentence = getAverageIndividualsPerSentence();
 	totalIndividualsAddressThroughTwitter = getTotalIndividualsAddressThroughTwitter();
 
+	totalSentencesWithLeftAndGreenTargets = getTotalSentencesWithLeftAndGreenTargets();
+	totalSentencesWithLeftAndGreenTargetsBothNegative = getTotalSentencesWithLeftAndGreenTargetsBothNegative();
     }
 
     @Override
@@ -54,20 +60,32 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 
 	AppPrintService.printSurfaceStructure("Number of annotated tweets: " + totalSentences);
 	AppPrintService.printSurfaceStructure("Number of group and person addresses: " + totalPersonAddresses);
-	AppPrintService.printSurfaceStructure("Number of group and person addresses w/negativeSentiment: " + totalPersonAddressesWithNegativeSentiment);
-	AppPrintService.printSurfaceStructure("Number of group and person addresses average p/s: " + averagePersonAddressesPerSentence);
+	AppPrintService.printSurfaceStructure("Number of group and person addresses w/negativeSentiment: "
+		+ totalPersonAddressesWithNegativeSentiment);
+	AppPrintService.printSurfaceStructure(
+		"Number of group and person addresses average p/s: " + averagePersonAddressesPerSentence);
 
 	AppPrintService.printSurfaceStructure("Number of group addresses: " + totalGroups);
-	AppPrintService.printSurfaceStructure("Number of group addresses w/negativeSentiment: " + totalGroupsWithNegativeSentiment);
+	AppPrintService.printSurfaceStructure(
+		"Number of group addresses w/negativeSentiment: " + totalGroupsWithNegativeSentiment);
 	AppPrintService.printSurfaceStructure("Number of group addresses average p/s: " + averageGroupsPerSentence);
-	
-	AppPrintService.printSurfaceStructure("Number of person addresses: " + totalIndividuals);
-	AppPrintService.printSurfaceStructure("Number of person addresses w/negativeSentiment: " + totalIndividualsWithNegativeSentiment);
-	AppPrintService.printSurfaceStructure("Number of person addresses average p/s: " + averageIndividualsPerSentence);
-	
-	AppPrintService.printSurfaceStructure("Number of individuals addressed through twitter: " + totalIndividualsAddressThroughTwitter);
-	AppPrintService.printSurfaceStructure("Number of individuals addressed through twitter w/negativeSentiment: " + totalIndividualsAddressThroughTwitterWithNegativeSentiment);
 
+	AppPrintService.printSurfaceStructure("Number of person addresses: " + totalIndividuals);
+	AppPrintService.printSurfaceStructure(
+		"Number of person addresses w/negativeSentiment: " + totalIndividualsWithNegativeSentiment);
+	AppPrintService
+		.printSurfaceStructure("Number of person addresses average p/s: " + averageIndividualsPerSentence);
+
+	AppPrintService.printSurfaceStructure(
+		"Number of individuals addressed through twitter: " + totalIndividualsAddressThroughTwitter);
+	AppPrintService.printSurfaceStructure("Number of individuals addressed through twitter w/negativeSentiment: "
+		+ totalIndividualsAddressThroughTwitterWithNegativeSentiment);
+
+	AppPrintService.printSurfaceStructure(
+		"Sentences with simultaneous left and green annotations:  " + totalSentencesWithLeftAndGreenTargets);
+
+	AppPrintService.printSurfaceStructure("Sentences with simultaneous left and green annotations both negative:  "
+		+ totalSentencesWithLeftAndGreenTargetsBothNegative);
     }
 
     private int getTotalPersonAdressIndividualsWithNegativeSentiment() {
@@ -123,6 +141,41 @@ public class PersonAddressEvaluator implements AnnotationEvaluator {
 				&& pa.hasNegativeSentiment())
 			.collect(Collectors.toList()).size())
 		.sum();
+    }
+
+    private int getTotalSentencesWithLeftAndGreenTargets() {
+	int countOfLeftAndGreenAnnotations = 0;
+
+	for (SentenceAnnotation sentence : sentenceAnnotations) {
+	    List<PersonAddress> personAddresses = sentence.getPersonAddresses();
+	    boolean sentenceContainsLeft = personAddresses.stream()
+		    .anyMatch(pa -> pa.getGroupAffiliation().equals(GroupAffiliationType.LEFT_WING));
+	    boolean sentenceContainsGreen = personAddresses.stream()
+		    .anyMatch(pa -> pa.getGroupAffiliation().equals(GroupAffiliationType.ENVIRONMENTAL_GREENS));
+	    if (sentenceContainsLeft && sentenceContainsGreen) {
+		countOfLeftAndGreenAnnotations++;
+	    }
+	}
+
+	return countOfLeftAndGreenAnnotations;
+    }
+
+    private int getTotalSentencesWithLeftAndGreenTargetsBothNegative() {
+	int countOfLeftAndGreenAnnotationsNegative = 0;
+
+	for (SentenceAnnotation sentence : sentenceAnnotations) {
+	    List<PersonAddress> personAddresses = sentence.getPersonAddresses();
+	    boolean sentenceContainsLeft = personAddresses.stream().anyMatch(
+		    pa -> pa.getGroupAffiliation().equals(GroupAffiliationType.LEFT_WING) && pa.hasNegativeSentiment());
+	    boolean sentenceContainsGreen = personAddresses.stream()
+		    .anyMatch(pa -> pa.getGroupAffiliation().equals(GroupAffiliationType.ENVIRONMENTAL_GREENS)
+			    && pa.hasNegativeSentiment());
+	    if (sentenceContainsLeft && sentenceContainsGreen) {
+		countOfLeftAndGreenAnnotationsNegative++;
+	    }
+	}
+
+	return countOfLeftAndGreenAnnotationsNegative;
     }
 
     private int getTotalSentences() {

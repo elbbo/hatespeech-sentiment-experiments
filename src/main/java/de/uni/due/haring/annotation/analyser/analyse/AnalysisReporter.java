@@ -61,6 +61,7 @@ public class AnalysisReporter extends JCasAnnotator_ImplBase {
 
 	negativeSentimentPredictionEvaluator.setjCas(jCas);
 	negativeSentimentPredictionEvaluator.processAnnotations();
+
     }
 
     @Override
@@ -94,6 +95,7 @@ public class AnalysisReporter extends JCasAnnotator_ImplBase {
 	generalPolticsGroupAffilationEvaluator.printEvaluationResults();
 	negativeSentimentSentencePredictionEvaluator.printEvaluationResults();
 	negativeSentimentPredictionEvaluator.printEvaluationResults();
+
     }
 
 }

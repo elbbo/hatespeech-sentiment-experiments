@@ -49,13 +49,13 @@ Recall : 0.37280703
 F1: 0.5362776
 
 Evaluations for targeted group <Env. Movement/Green> 
-TruePoisitve: 30
+TruePoisitve: 34
 FalsePositive: 15
-FalseNegative: 101
+FalseNegative: 97
 TrueNegative: 4496
-Precision: 0.6666667
-Recall : 0.22900763
-F1: 0.34090906
+Precision: 0.6938776
+Recall : 0.259542
+F1: 0.37777779
 
 
 Results of the experiments on layer 3 (Sentence Level) 

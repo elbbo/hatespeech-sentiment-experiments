@@ -63,7 +63,8 @@ public class GoldAnnotationProcessor extends JCasAnnotator_ImplBase {
 	    sentenceAnnotation.setPersonAddresses(new ArrayList<>());
 	    sentenceAnnotation.setOffenseGoldAnnotation(germEvalAnnotations.get(sentence.getCoveredText()));
 	    sentenceAnnotation.setOffensive(germEvalAnnotations.get(sentence.getCoveredText()).equals("OFFENSE"));
-	    sentenceAnnotation.setProfanity(germEvalAnnotationsLayer2.get(sentence.getCoveredText()).equals("PROFANITY"));
+	    sentenceAnnotation
+		    .setProfanity(germEvalAnnotationsLayer2.get(sentence.getCoveredText()).equals("PROFANITY"));
 
 	    for (Zielgruppenadressierung pa : JCasUtil.subiterate(aJCas, Zielgruppenadressierung.class, sentence, true,
 		    true)) {
